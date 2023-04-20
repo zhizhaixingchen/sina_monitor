@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sina.dao.mapper.SinaUserMonitorMapper">
+
+    <!--根据uid获取数据-->
+    <select id="queryUserMonitorByUid" resultMap="userMonitor">
+        SELECT
+            u_id,
+            u_name,
+            u_hot,
+            u_blognum,
+            u_location,
+            u_host,
+            u_imgUrl,
+            sina_user.g_id as g_id_for,
+            sina_group.g_id as gid,
+            g_name,
+            g_user_nummax,
+            g_user_numcur
+        FROM sina_user
+        LEFT JOIN sina_group
+            ON sina_group.g_id = sina_user.g_id
+        WHERE
+            u_id = #{u_id}
+    </select>
+    <resultMap id="userMonitor" type="com.sina.pojo.SinaUserMonitor">
+        <id property="u_id" column="u_id"/>
+        <result property="u_name" column="u_name"/>
+        <result property="u_hot" column="u_hot"/>
+        <result property="u_blognum" column="u_blognum"/>
+        <result property="u_location" column="u_location"/>
+        <result property="u_host" column="u_host"/>
+        <result property="u_imgUrl" column="u_imgUrl"/>
+        <association property="groupMonitor" column="g_id" resultMap="groupMonitor"/>
+    </resultMap>
+
+    <select id="queryBlogNumFromDB" resultType="java.lang.Long">
+        SELECT u_blognum
+        FROM sina_user
+        WHERE u_id = #{u_id}
+    </select>
+
+    <resultMap id="groupMonitor" type="com.sina.pojo.SinaGroupMonitor">
+        <id property="g_id" column="gid"/>
+        <result property="g_name" column="g_name"/>
+        <result property="g_time" column="g_time"/>
+        <result property="g_user_nummax" column="g_user_nummax"/>
+        <result property="g_user_numcur" column="g_user_numcur"/>
+    </resultMap>
+
+    <!--插入数据-->
+    <insert id="insertUserMonitor" parameterType="com.sina.pojo.SinaUserMonitor">
+            INSERT
+            INTO sina_user(u_id,u_name,u_hot,u_blognum,u_location,u_host,u_imgUrl,g_id)
+            VALUES (#{u_id},#{u_name},#{u_hot},#{u_blognum},#{u_location},#{u_host},#{u_imgUrl},#{groupMonitor.g_id})
+    </insert>
+
+    <!--分组变为null-->
+    <delete id="deleteUserMonitor">
+        DELETE FROM sina_user
+        WHERE u_id = #{u_id}
+    </delete>
+
+    <!--更新数据   修改分组-->
+    <update id="updateUserMonitorGroup">
+        UPDATE sina_user SET
+            g_id = #{g_id}
+        WHERE u_id = #{u_id}
+    </update>
+
+    <!--更新数据 修改更新时间-->
+    <update id="updateUserMonitorBlogNum">
+        UPDATE sina_user SET
+            u_blognum = #{u_blognum},
+            u_hot = #{u_hot}
+        WHERE u_id = #{u_id}
+    </update>
+
+<!--    查询所有-->
+    <select id="queryAll" resultMap="userMonitor">
+        SELECT
+            u_id,
+            u_name,
+            u_hot,
+            u_blognum,
+            u_location,
+            u_host,
+            u_imgUrl,
+            sina_user.g_id as g_id_for,
+            sina_group.g_id as gid,
+            g_name,
+            g_user_nummax,
+            g_user_numcur
+        FROM sina_user
+        LEFT JOIN sina_group
+            ON sina_group.g_id = sina_user.g_id
+    </select>
+
+    <select id="queryUidByGid" resultType="java.lang.Long">
+        SELECT u_id
+        FROM   sina_user
+        WHERE g_id = #{g_id}
+    </select>
+</mapper>

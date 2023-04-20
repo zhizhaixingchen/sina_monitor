@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>微鱼舆情监测系统</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+</head>
+<style>
+    #main {
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-top: 20px;
+    }
+    #logo {
+        width: 150px;
+        height: auto;
+        margin: 0px auto;
+        display: block;
+    }
+    #scanmain{
+        margin-top: 20px;
+    }
+    #head {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        background-color: #FCFCFC;
+        border: 1px solid #eee;
+        box-shadow: 1px 1px 1px #666;
+        margin-top: 150px;
+    }
+    #history {
+        margin-left: 150px;
+        margin-top: 10px;
+    }
+    #history > span{
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .user {
+        padding: 20px 10px;
+        margin-top: 20px;
+        box-shadow: 1px 1px 1px #888;
+        background-color: #FCFCFC;
+    }
+    .u_content p:first-child {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    .u_content > span > i {
+        color: brown;
+        font-style: normal;
+        font-size: 13px;
+        font-weight: 600;
+        opacity: 0.9;
+    }
+    .u_content > span{
+        margin-right: 10px;
+    }
+
+    .u_content p{
+        margin-top: 5px;
+    }
+    .u_other{
+        margin-top: 15px;
+    }
+    .u_other > p:last-child {
+        margin-top: 5px;
+    }
+    .u_name{
+        cursor: pointer;
+    }
+    .u_name:hover{
+        color:darkblue;
+    }
+</style>
+<body>
+    <div id="main">
+        <div id="head">
+            <img id ="logo" th:src="@{/img/scanlogo.png}"/>
+            <div id="scanmain" class="layui-row">
+                <div class="layui-col-md-offset2 layui-col-md6">
+                    <input id="scanKeyword" class="layui-input" type="text" th:placeholder="请输入用户名">
+                </div>
+                <div class="layui-col-md2">
+                    <button id="submitBtn" type="button" class="layui-btn layui-btn">搜索</button>
+                </div>
+            </div>
+            <div id="history">
+
+            </div>
+        </div>
+
+
+        <div id="userContent">
+        </div>
+    </div>
+</body>
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.use(['element','form','layer'],function(){
+        var elem = layui.element
+        var form = layui.form
+        var layer = layui.layer
+    })
+</script>
+<script th:inline="javascript">
+
+    $(document).ready(function () {
+        //默认显示历史记录
+        loadHistory();
+
+        $("#submitBtn").on('click',function () {
+            var content = $("#scanKeyword").val();
+            content = content.trim();
+            if(content.length > 0){
+                scanUser(content)
+            }
+            $("#scanKeyword").val("")
+            console.log($("#head").css("margin-top"))
+            if($("#head").css("margin-top")!="0px"){
+                $("#head").animate({"margin-top":"0px"});
+            }
+        })
+
+        //更新历史
+        //https://www.cnblogs.com/leiting/p/9323539.html    Jquery点击事件失效原因和解决办法
+        $("#history").on('click','.u_history',function () {
+            var keyname = $(this).text();
+            console.log("keyname = "+keyname)
+            scanUser(keyname)
+            if($("#head").css("margin-top")!="0px"){
+                $("#head").animate({"margin-top":"0px"});
+            }
+        })
+
+    })
+
+    //搜索用户
+    function scanUser(content){
+        $.ajax({
+            type: "GET",
+            url: "/user/checkuser",
+            data: {username:content},
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            success: function (val) {
+                //更新用户列表
+                freshScan(val["userJson"])
+                //更新搜索历史
+                freshHistory(val["history"])
+            }
+        });
+    }
+    //添加用户信息
+    function freshScan(val){
+        //删除原来的class数据
+        $(".user").remove()
+        var str = "";
+        for(var index in val){
+            var user = val[index]
+            var name = user["username"]
+            var img = user["imgUrl"]
+            var fans = user["fans"]
+            var blogNum = user["blogNum"]
+            var focus = user["focus"]
+            var uid = user["uid"]
+            var location = user["location"]
+            var host = user["host"]
+            str += "<div class=\"user\"> \n" +
+                "      <div class=\"layui-row\">\n"+
+                "           <div class=\"layui-col-md2\">\n"+
+                "               <img src=\""+img+"\" width=\"80px\" height=\"80px\"/> \n" +
+                "           </div>\n"+
+                "           <div class=\"u_content layui-col-md4\"> \n" +
+                "               <a href=\"\\user\\detail?uid="+uid+"\"><p class='u_name'>"+name+"</p></a>\n" +
+                "               <span>微博: <i>"+blogNum+"</i></span> \n" +
+                "               <span>粉丝: <i>"+fans+"</i></span> \n" +
+                "               <span>关注: <i>"+focus+"</i></span> \n" +
+                "               <p>位置: "+location+"</p> \n" +
+                "           </div>\n" +
+                "      </div>\n"+
+                "      <div class=\"u_other\"> \n" +
+                "          <p>uid: "+uid+"</p> \n" +
+                "          <p>个人主页: <a style=\"color:darkblue\" href=\""+host+"\">"+host+"</a></p> \n" +
+                "      </div>\n" +
+                "    </div>"
+        }
+        $("#userContent").append(str)
+    }
+    //加载搜索列表
+    function loadHistory(){
+        $(".u_history").remove()
+        var userList = [[${application.historyUserScan}]]
+        var str = "";
+        for(var index in userList){
+            str += "<span class=\"u_history layui-badge layui-bg-gray\">"+userList[index]+"</span>"
+        }
+        $("#history").append(str)
+    }
+
+    //加载搜索列表
+    function freshHistory(history){
+        console.log("freshHistory="+history)
+        $(".u_history").remove()
+        var str = "";
+        for(var index in history){
+            str += "<span class=\"u_history layui-badge layui-bg-gray\">"+history[index]+"</span>"
+        }
+        $("#history").append(str)
+    }
+</script>
+</html>

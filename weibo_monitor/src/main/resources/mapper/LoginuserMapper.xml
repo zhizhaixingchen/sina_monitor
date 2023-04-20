@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sina.dao.mapper.LoginuserMapper">
+    <!--根据邮箱进行查询-->
+    <select id="queryUserBymail" resultType="com.sina.pojo.Loginuser">
+        SELECT *
+        FROM loginuser
+        where `mail` = #{mail}
+    </select>
+    <select id="queryAll" resultType="com.sina.pojo.Loginuser">
+        SELECT *
+        FROM loginuser
+        where `mail` != #{mail}
+    </select>
+    <update id="updateLock">
+        UPDATE loginuser
+        SET
+            `lock` = #{lock},
+            `log` = #{log}
+        where
+            `mail` = #{mail}
+    </update>
+
+    <update id="updateAllLock">
+        UPDATE loginuser
+        SET
+            `lock` = #{lock}
+    </update>
+
+    <update id="updatePower">
+        UPDATE loginuser
+        SET
+            `${field}`=#{status}
+        WHERE mail = #{mail}
+    </update>
+
+    <update id="updateAllPower">
+        UPDATE loginuser
+        SET
+            `topic` = 1,
+            `user` = 1,
+            `blog` = 1,
+            `admin` = 1
+        WHERE mail = #{mail}
+    </update>
+
+
+    <insert id="insertUser">
+        INSERT INTO loginuser(`mail`,`name`,`password`,`topic`,`user`,`blog`,`admin`,`lock`,`log`)
+        values(#{mail},#{name},MD5(#{password}),#{topic},#{user},#{blog},#{admin},#{lock},#{log})
+    </insert>
+
+    <delete id="deleteUser">
+        DELETE
+        FROM loginuser
+        WHERE `mail` = #{mail}
+    </delete>
+
+</mapper>

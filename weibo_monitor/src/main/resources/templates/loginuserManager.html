@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>微鱼舆情监测系统</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/layui/layui.js}"></script>
+</head>
+<style>
+    #headTitle {
+        text-align: center;
+        font-size: 20px;
+        margin: 15px auto;
+        font-weight: bold;
+    }
+</style>
+<body>
+<div>
+    <div>
+        <div>
+            <p id="headTitle">微鱼后台用户管理</p>
+        </div>
+        <div id="maintable">
+            <!--用于刷新table-->
+            <table id="monitorTable" lay-filter="test"></table>
+        </div>
+    </div>
+</div>
+</body>
+<!--为表格添加自增序号列-->
+<script type="text/html" id="zizeng">
+    {{d.LAY_TABLE_INDEX+1}}
+</script>
+<!--topic-->
+<script type="text/html" id="topicMonitor">
+    <input type="checkbox" id="topic" prop="{{d.mail}}" value="{{d.topic}}" lay-skin="switch" lay-text="开|关" lay-filter="monitorFilter" {{ d.topic ? 'checked' : ''}}>
+</script>
+<!--user-->
+<script type="text/html" id="userMonitor">
+    <input type="checkbox" id="user" prop="{{d.mail}}" value="{{d.user}}" lay-skin="switch" lay-text="开|关" lay-filter="monitorFilter" {{ d.user ? 'checked' : ''}}>
+</script>
+<!--blog-->
+<script type="text/html" id="blogMonitor">
+    <input type="checkbox" id="blog" prop="{{d.mail}}" value="{{d.blog}}" lay-skin="switch" lay-text="开|关" lay-filter="monitorFilter" {{ d.blog ? 'checked' : ''}}>
+</script>
+<!--管理员-->
+<script type="text/html" id="adminMonitor">
+    <input type="checkbox" id="admin" prop="{{d.mail}}" value="{{d.admin}}" lay-skin="switch" lay-text="开|关" lay-filter="monitorFilter" {{ d.admin ? 'checked' : ''}}>
+</script>
+<!--删除用户-->
+<script type="text/html" id="delete">
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+</script>
+<script>
+    layui.use(['table','layer'], function(){
+        var table = layui.table;
+        var form = layui.form;
+        tableIns = table.render({
+            elem: '#monitorTable'
+            ,url: '/loginuser/fresh'
+            ,page:true
+            ,limit:10
+            ,even:true
+            ,cellMinWidth:20
+            ,cols: [
+                [
+                    {field: 'zizeng', title: '序号',align:"center",type:"numbers"}
+                    ,{field: 'mail', title: '邮箱',align:"center"}
+                    ,{field: 'name', title: '用户名', align:"center"}
+                    ,{field: 'topic', title: '话题监控',align:"center",templet:'#topicMonitor'}
+                    ,{field: 'user', title: '用户监控',align:"center",templet:'#userMonitor'}
+                    ,{field: 'blog', title: '微博监控',align:"center",templet:'#blogMonitor'}
+                    ,{field: 'admin', title: '用户管理',align:"center",templet:'#adminMonitor'}
+                    ,{field: 'delete',title: '删除',align:'center', toolbar: '#delete'}
+                ]
+            ]
+        });
+
+        //修改操作
+        form.on('switch(monitorFilter)',function(obj){
+            let monitor = obj.elem.value
+            let field = obj.elem.attributes.id.value;
+            let mail = obj.elem.attributes.prop.value;
+            //monitor为点击之前的状态
+            if(monitor == "0"){
+                monitor = true
+            }else{
+                monitor = false
+            }
+            //更新监控数据
+            $.ajax({
+                type: "GET",
+                url: "/loginuser/manage",
+                data: {mail:mail,field:field,status:monitor},
+                dataType: "json",
+                contentType:"application/x-www-form-urlencoded; charset=utf-8",
+                success: function(val){
+                    if(val){
+                        layer.msg("修改成功",{icon:6});
+                    }else{
+                        layer.msg("抱歉你没有权限执行该操作",{icon:5});
+                    }
+                    //重新加载table
+                    tableIns.reload({
+                        url:'/loginuser/fresh',
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                    })
+                }
+            });
+        })
+
+        //执行删除操作
+        table.on('tool(test)',function(obj){
+            layer.confirm('删除操作无法恢复？', {
+                time: 0
+                ,btn: ['我确定', '再想想']
+                ,yes: function(index){
+                    layer.close(index);
+                    //获取邮件
+                    let mail = obj.data.mail;
+                    $.ajax({
+                        type: "GET",
+                        url: "/loginuser/delete",
+                        data: {mail:mail},
+                        dataType: "json",
+                        contentType:"application/x-www-form-urlencoded; charset=utf-8",
+                        success: function(val){
+                            if(val){
+                                layer.msg("该用户已被删除",{icon:6});
+                            }else{
+                                layer.msg("抱歉你没有权限执行该操作",{icon:5});
+                            }
+                            //重新加载table
+                            tableIns.reload({
+                                url:'/loginuser/fresh',
+                                page: {
+                                    curr: 1 //重新从第 1 页开始
+                                }
+                            })
+                        }
+                    });
+                }
+            });
+        })
+    })
+</script>
+</html>

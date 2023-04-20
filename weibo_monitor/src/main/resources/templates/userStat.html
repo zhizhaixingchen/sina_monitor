@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>微鱼舆情监测系统</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+</head>
+<style>
+    #headTitle p {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+    #tool {
+        margin: 0 10%;
+        background-color: #FCFCFC;
+        border: 1px solid #eee;
+        padding: 10px 0px;
+        background-color: darkslateblue;
+    }
+    #tool label {
+        color: white;
+    }
+    #hotBlog {
+        margin: 0px 10%;
+    }
+    .singleBlog{
+        border:1px solid #eee;
+        padding: 10px;
+        background-color: #FCFCFC;
+        margin-bottom:20px;
+    }
+    .blogName{
+        font-size:16px;
+        font-weight:600;
+        color:#000;
+    }
+    .blogHeadEmotion{
+        font-size: 20px;
+        padding-top: 10px;
+        color:#111;
+    }
+    .blogContent{
+        margin-top:25px;
+        text-indent:2em;
+        color:#333;
+        font-size:16px;
+        margin-left:8%;
+        margin-right:10%;
+        word-wrap:break-word
+    }
+    .blogCount{
+        margin-top:25px;
+        margin-left:8%;
+        margin-right:10%;
+        margin-bottom: 30px;
+        font-size:16px;
+        color:brown;
+    }
+    .blogCount span{
+        border-right:1px solid #999;
+    }
+    .layui-flow-more{
+        display: none;
+    }
+
+    .commentDetail {
+        height: auto;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 30px;
+        padding: 5px 10px;
+        background-color: white;
+        box-shadow: -1px -1px 2px gainsboro;
+        color: #666;
+        font-size: 12px;
+    }
+    .c_name, .c_emotion {
+        margin-bottom: 8px;
+        font-size: 14px;
+        margin-top: 8px;
+        color: #191970;
+        font-weight: bold;
+    }
+    .c_content {
+        padding: 10px 30px 10px 0px;
+        text-indent: 2em;
+    }
+    .singleComment{
+        margin: 10px 0px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+    }
+</style>
+    <body>
+        <div id="headTitle">
+            <p>今日监控用户发表微博概览</p>
+        </div>
+        <div id="tool">
+            <div class="layui-row layui-form">
+                <div class="layui-col-md-offset1 layui-col-md4">
+                    <label class="layui-form-label">用户分组</label>
+                    <div class="layui-input-inline">
+                        <select  id="groupOption" lay-filter="groupOption">
+                            <option value="" selected></option>
+                            <option th:value="${g.g_id}" th:utext="${g.g_name}" th:each="g,iterStat:${allGroup}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-col-md4">
+                    <label class="layui-form-label">用户名检索</label>
+                    <div class="layui-input-inline">
+                        <input id="search" type="text" placeholder="用户名检索" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-col-md1">
+                    <button id="emotionSort" status="0" init="true" class="layui-btn">
+                        <span>舆情排序</span>
+                        <i id="sortSign" class="layui-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="blogContent">
+            <div id="hotBlog"></div>
+        </div>
+
+    </body>
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    //加载flow事件
+    function flowLoad(){
+        layui.use('flow', function() {
+            var flow = layui.flow;
+            //下拉加载
+            flow.load({
+                elem: '#hotBlog',
+                end: '大批量数据正在赶来的路上',
+                done: function(from, next){
+                    let str = "";
+                    switch(mode){
+                        case 'time':
+                            addData('/userStat/default',{'from':from})
+                            break;
+                        case 'emotion':
+                            let rotation = emotionConf()
+                            addData('/userStat/emotion',{'rotation':rotation,'from':from})
+                            break;
+                        case 'search':
+                            let content = $("#search").val()
+                            addData('/userStat/user',{'name':content,'from':from})
+                            break;
+                        case 'group':
+                            $("#search").val("")
+                            console.log("g_id"+selectValue)
+                            addData('/userStat/group',{'g_id':selectValue,'from':from})
+                            break;
+                    }
+                    console.log("page = "+from)
+                    next(str, from < 65536);
+                }
+            });
+        })
+
+    }
+    //emotion后台查询数据前获取升序降序
+    function emotionConf(){
+        //一共有三种状态   正序、降序、和不使用舆情排序
+        let status = $('#emotionSort').attr("status");
+        console.log("status = "+status)
+        let sortrotation = "";
+        switch(status){
+            case "0":
+                mode = 'emotion'
+                sortrotation = "desc";
+                $('#sortSign').attr("class","layui-icon layui-icon-down")
+                $('#emotionSort').attr("class","layui-btn layui-btn-danger")
+                $('#emotionSort').attr("status",1);
+                break;
+            case "1":
+                mode = 'emotion'
+                sortrotation = "asc";
+                $('#sortSign').attr("class","layui-icon layui-icon-up")
+                $('#emotionSort').attr("class","layui-btn layui-btn-normal")
+                $('#emotionSort').attr("status",2);
+                break;
+            case "2":
+                mode = 'time'
+                sortrotation = "-"
+                $('#sortSign').attr("class","layui-icon")
+                $('#emotionSort').attr("class","layui-btn")
+                $('#emotionSort').attr("status",0);
+                break;
+        }
+        return sortrotation;
+    }
+    //from 页数   url地址   data get数据
+    function addData(url,data){
+        let loading = layer.load(1);
+        $.ajax({
+            type: "GET",
+            url: url,
+            data: data,
+            dataType: "json",
+            contentType:"application/x-www-form-urlencoded; charset=utf-8",
+            success: function(val){
+                //追加数据
+                console.log(val)
+                console.log(val.length == 0)
+                layer.close(loading)
+                if(val.length == 0){
+                    layer.msg("已经到底啦！")
+                }else{
+                    addContent(val)
+                }
+            }
+        });
+    }
+/*    //更新内容显示区域
+    function freshContent(singleBlogList){
+        //清空hotBlog的子元素
+        $('#hotBlog').empty();
+        var str = getContent(singleBlogList);
+        //追加
+        $('#hotBlog').append(str);
+    }*/
+    //追加内容显示区域
+    function addContent(singleBlogList){
+        var str = getContent(singleBlogList);
+        //追加
+        $('#hotBlog').append(str);
+
+    }
+    //获取内容显示区域
+    function getContent(singleBlogList){
+        let str = "";
+        for(let i = 0;i<singleBlogList.length;i++){
+            let singleBlog = singleBlogList[i];
+            str+="              <div class=\"singleBlog\">\n" +
+                "                    <div class=\"blogHead layui-row layui-col-space10\">\n" +
+                "                        <div class=\"layui-col-md1\">\n" +
+                "                            <img class=\"blogHeadImg\" src=\""+singleBlog.imgUrl+"\" alt=\"头像\" width=\"50px\" height=\"50px\"/>\n" +
+                "                        </div>\n" +
+                "                        <div class=\"layui-col-md3\" style=\"margin-top: 5px\">\n" +
+                "                            <p class=\"blogName\">"+singleBlog.name+"</p>\n" +
+                "                            <p class=\"pubtime\" style=\"margin-top: 4px\">"+singleBlog.pub_time+"</p>\n" +
+                "                        </div>\n" +
+                "                        <div class=\"blogHeadEmotion layui-col-md2 layui-col-md-offset3\">\n";
+            if(singleBlog.emotion>0.9){
+                str+="                  <p>情感倾向 &#128516;</p>\n";
+            }else if(singleBlog.emotion<0.9&&singleBlog.emotion>0.1){
+                str+="                  <p>情感倾向 &#128528;</p>\n";
+            }else if(singleBlog.emotion<0.1){
+                str+="                  <p>情感倾向 &#128542;</p>\n";
+            }
+            str+="                  </div>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"blogContent\">\n" +
+                "                        <p>"+singleBlog.context+"</p>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"blogCount layui-row\">\n" +
+                "                        <span class=\"blogMonitor layui-col-md2\"><a href=\"/blog/detail?uid="+singleBlog.uid+"&mid="+singleBlog.mid+"\">监控话题</a></span>\n" +
+                "                        <span class=\"blogTransfer layui-col-md2 layui-col-md-offset1\" >转发:"+singleBlog.transfer+"</span>\n" +
+                "                        <span class=\"blogComments layui-col-md2 layui-col-md-offset1\"><a target=\""+singleBlog.mid+"\" style=\"cursor: pointer\">评论:"+singleBlog.comments_num+"</a></span>\n" +
+                "                        <span class=\"blogLike layui-col-md2 layui-col-md-offset1\">&#9829;:"+singleBlog.like+"</span>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"commentDetail\" hidden id=\""+singleBlog.mid+"\"></div>"+
+                "                    <p style=\"font-size:14px\">原网站 <a href=\""+singleBlog.myUrl+"\" style=\"color:#2468a2\">"+singleBlog.myUrl+"</a></p>\n" +
+                "                </div>";
+        }
+        return str;
+    }
+</script>
+<script th:inline="javascript">
+    //当前模式 time emotion search group
+    var mode = 'time';
+    var selectValue = "0";
+    var form = null;
+    layui.use(['layer','form'], function() {
+        var aaa = 1;
+        var layer = layui.layer;
+        form = layui.form;
+        form.on('select(groupOption)',function(obj){
+            //设置模式
+            if(obj.value!=""){
+                //重新加载分页 删除之前的数据
+                $('#hotBlog').remove();
+                $('#blogContent').append("<div id=\"hotBlog\"></div>")
+                //分组赋值
+                selectValue = obj.value
+                mode = 'group'
+                flowLoad();
+                //初始化emotion和search
+                $('#sortSign').attr("class","layui-icon")
+                $('#emotionSort').attr("class","layui-btn")
+                $('#emotionSort').attr("init","true");
+                $("#search").val("")
+            }
+        })
+    });
+
+    flowLoad();
+
+</script>
+<script th:inline="javascript">
+    $(document).ready(function(){
+        //第一次根据时间进行数据加载
+        //addData('/userStat/default',{'from':1})
+        //绑定事件
+        //flowLoad();
+        //搜索事件
+        $("#search").bind("change",function() {
+            //重新加载分页 删除之前的数据
+            $('#hotBlog').remove();
+            $('#blogContent').append("<div id=\"hotBlog\"></div>")
+            //修改模式
+            mode = 'search';
+            flowLoad();
+
+            form.render('select')
+            $('#sortSign').attr("class","layui-icon")
+            $('#emotionSort').attr("class","layui-btn")
+            $('#emotionSort').attr("init","true");
+            console.log("searchFinal")
+        });
+
+        //控制iframe
+        $(document).on("click",".blogComments",function(){
+            //注意：这个错误 我们使用$(".blogComments")获取到多个对象，并不是想象中的单个对象，改进：$(this)
+            //var mid = $(".blogComments").children("a")
+            let mid = $(this).children("a").attr("target")
+            let commentDiv = $('#'+mid)
+            let temp = commentDiv.attr("hidden")
+            if(typeof temp == "undefined"){
+                commentDiv.attr("hidden",true)
+            }else{
+                commentDiv.removeAttr("hidden")
+                //在这里获取评论信息
+                //判断commentdiv是否有子节点 如果有子节点则不发送请求，否则发送请求
+                console.log("子节点 = "+commentDiv.children().length);
+                if(commentDiv.children().length==0){
+                    $.ajax({
+                        type: "GET",
+                        url: "/blog/comments",
+                        data: {mid:mid},
+                        dataType: "json",
+                        success: function(val){
+                            console.log("val = "+JSON.stringify(val))
+                            let str = "";
+                            for(let i=0;i<val.length;i++){
+                                let comment = val[i];
+                                str += "<div class=\"singleComment\">\n" +
+                                    "       <div class=\"layui-row\">\n" +
+                                    "           <div class=\"layui-col-md1\">\n" +
+                                    "               <img src=\""+comment.user.imgUrl+"\" width=\"40px\" height=\"40px\">\n" +
+                                    "           </div>\n" +
+                                    "           <p class=\"c_name layui-col-md4\">"+comment.user.username+"</p>\n" +
+                                    "           <p class=\"c_emotion layui-col-md-offset5 layui-col-md2\">舆情评分:<em style=\"font-weight:bold;font-style: normal;color: brown;font-size: 14px;\">"+comment.emotion.toFixed(2)+"</em></p>\n" +
+                                    "       </div>\n" +
+                                    "       <div class=\"c_content\" >"+comment.context+"</div>\n" +
+                                    "            <div class=\"layui-row c_third\">\n" +
+                                    "                 <div class=\"c_time layui-col-md2\">"+comment.pub_time+"</div>\n" +
+                                    "                 <div class=\"c_like layui-col-md-offset8 layui-col-md2\">✊<em style=\"padding-left:5px;font-style: normal;color: brown;font-size: 13px; font-weight: bold\" >"+comment.like+"</em></div>\n" +
+                                    "             </div>\n" +
+                                    "   </div>";
+                            }
+                            //追加
+                            commentDiv.append(str);
+                        }
+                    });
+
+                }
+            }
+        })
+
+        $(document).on('click','#emotionSort',function(){
+            console.log($(this))
+
+            //重新加载分页
+            $('#hotBlog').remove();
+            $('#blogContent').append("<div id=\"hotBlog\"></div>")
+
+            mode = "emotion";
+            flowLoad();
+            //如果init == true重新加载
+            let status = $("#emotionSort").attr("init");
+            if(status == "true"){
+
+                $("#emotionSort").attr("init","false");
+                //初始化search和group
+                //$("#groupOption").empty();     删除下拉选项
+                form.render("select")
+                $("#search").val("")
+            }
+
+
+
+
+            //$("#groupOption").empty();
+            //form.render("select");
+
+            ///let sortrotation = emotionConf();
+            /*let loading = layer.load(1);
+            $.ajax({
+                type: "GET",
+                url: "/userStat/emotion",
+                data: {rotation:sortrotation},
+                dataType: "json",
+                contentType:"application/x-www-form-urlencoded; charset=utf-8",
+                success: function(val){
+                    freshContent(val)
+                    layer.close(loading)
+                }
+            });*/
+        })
+    });
+
+</script>
+</html>

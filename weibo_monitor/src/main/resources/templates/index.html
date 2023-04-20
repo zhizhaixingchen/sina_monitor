@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>微鱼</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/validate.js}"></script>
+</head>
+<style>
+    #login {
+        border: 1px solid #CCC;
+        width: 350px;
+        height: 380px;
+        position: fixed;
+        right: 150px;
+        top: 120px;
+        background-color: #cde6fe44;
+        box-shadow: 1px 1px 3px #333;
+    }
+    #log_form {
+        margin: auto 50px;
+    }
+    body {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        min-width: 1000px;
+        z-index: -10;
+        zoom: 1;
+        background-color: #fff;
+        background: url("/img/back.png") no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        background-position: center 0;
+    }
+
+    #login p:first-child {
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 30px;
+        font-size: 20px;
+        color: white;
+        font-weight: bold;
+    }
+    #headlogo {
+        font-size: 20px;
+        background: #ccc6;
+        padding-left: 50px;
+        font-family: SimSun;
+    }
+    #register{
+        margin:10px 50px;
+    }
+</style>
+<body>
+<div id="headlogo">
+    <img th:src="@{/img/logo.png}" width="70px" height="40px"/>
+    微鱼
+</div>
+<!--登录-->
+<div id="login">
+    <p>用户登录</p>
+    <div id="log_form" class="layui-form">
+        <!--登录form-->
+        <div class="layui-form-item">
+            <input type="email" id="log_username" placeholder="请输入QQ邮箱" class="layui-input">
+        </div>
+
+        <div class="layui-form-item">
+            <input type="password" id="log_password" placeholder="请输入密码" minlength="8" maxlength="16" class="layui-input">
+
+        </div>
+
+        <div class="layui-form-item layui-row">
+            <div class="layui-col-md8">
+                <input type="text" id="log_validate" placeholder="请输入验证码" class="layui-input">
+            </div>
+            <div id="log_container" class="layui-col-md4" style="width: 80px;height: 38px;"></div>
+        </div>
+        <button id = "log_submit" class="layui-btn layui-btn-fluid layui-btn-disabled" disabled>立即登录</button>
+        <p style="margin-top: 30px;color: whitesmoke;">还没有账号?<a id="log_toreg" style="font-style: normal;color:blue;cursor: pointer">立即注册</a></p>
+    </div>
+
+</div>
+<div id="register" hidden>
+    <div class="layui-form">
+        <div class="layui-tab-item layui-show">
+            <!--注册form-->
+            <div class="layui-form-item">
+                    <input type="text" id="reg_username" placeholder="请输入用户名(最多10个字符)" minlength="1" maxlength="10" required class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <input type="password" id="reg_password" placeholder="请输入密码" minlength="8" maxlength="16" required  class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <input type="password" id="reg_repassword" placeholder="确认密码" minlength="8" maxlength="16" required class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                    <input type="email" id="reg_mail" placeholder="请输入QQ邮箱" required  class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-inline">
+                    <input type="tel" id="reg_validate" minlength="6" maxlength="6" placeholder="验证码" required autocomplete="off" class="layui-input">
+                </div>
+                    <button id="reg_mailsend" load = "true" class="layui-btn layui-btn-primary layui-btn-disabled" disabled>获取验证</button>
+                    <em id="reg_quartz" style="font-style: normal;color:red;font-size:12px"></em>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    var layer = null;
+    layui.use(['element','layer'],function () {
+        var element = layui.element
+        layer = layui.layer;
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        var verifyCode = new GVerify("log_container");
+        //登录按钮可用性判断 监听密码框和用户框   注册按钮不变色
+        $("#log_username,#log_password,#log_validate").on("onpropertychange change input",function () {
+            canUseLogBtn()
+        })
+        //获取验证码按钮可用性判断
+        $("#reg_username,#reg_password,#reg_repassword,#reg_mail").on("onpropertychange change input",function () {
+            canUseRegBtn()
+        })
+        //登录按钮判断
+        $(document).on("click","#log_submit",function () {
+            let result = verifyCode.validate($("#log_validate").val())
+            if(!result){
+                layer.msg("验证码输入有误",{icon:5})
+                return
+            }
+            let mail = $("#log_username").val()
+            let password = $("#log_password").val()
+            console.log("mail = "+mail)
+            console.log("password = "+password)
+            $.ajax({
+                type: "POST",
+                url: "index/checkLogin",
+                data: {mail:mail,password:password},
+                dataType: "json",
+                success: function(val){
+                    console.log("val = "+val)
+                    if(val.status){
+                        window.location.href = "/main"
+                    }else{
+                        layer.msg(val.message,{icon:5})
+                        verifyCode.refresh()
+                    }
+                }
+            });
+        })
+
+        //进入注册界面
+        $(document).on("click","#log_toreg",function () {
+            //页面层-自定义
+            layer.open({
+                type: 1,
+                title: '用户注册',
+                area:['40%','60%'],
+                btn: ['确定', '取消'],
+                content: $('#register'),
+                yes:function(index){
+                    let username = $("#reg_username").val()
+                    let mail = $("#reg_mail").val()
+                    let password = $("#reg_password").val()
+                    let repassword = $("#reg_repassword").val()
+                    let validate = $("#reg_validate").val()
+
+                    if(username!=""&&password!=""&&mail!=""&&repassword!=""&&validate!=""){
+                        $.ajax({
+                            type: "POST",
+                            url: "/index/register",
+                            data: {username:username,password:password,mail:mail,validate:validate},
+                            dataType: "json",
+                            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                            success: function (val) {
+                                if(val.status){
+                                    layer.msg(val.message,{icon:6})
+                                    mainQuart(false);
+                                }else{
+                                    layer.msg(val.message,{icon:5})
+                                }
+                            }
+                        });
+                        layer.close(index);
+                    }
+
+                }
+            });
+        })
+
+        //发送邮件
+        var mailInterval = null;
+        $(document).on("click","#reg_mailsend",function(){
+            console.log("验证之前")
+            let username = $("#reg_username").val()
+            let mail = $("#reg_mail").val();
+            let password = $("#reg_password").val()
+            let repassword = $("#reg_repassword").val()
+            //名字合法性检验  不能包含空格
+            if(username.indexOf(" ")!=-1){
+                parent.layer.msg("用户名不能包含空格",{icon:5});
+                return
+            }
+            //密码相同校验
+            if(password!=repassword){
+                parent.layer.msg("两次密码输入不一致",{icon:5});
+                return
+            }
+            //密码复杂度校验
+            var pwdRegex = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z]).{8,16}');
+            if (!pwdRegex.test(password)) {
+                parent.layer.msg("您的密码复杂度太低（密码中必须包含字母、数字且长度为8到16位。）",{icon:5});
+                return
+            }
+
+            //邮箱检验在这里进行
+            $.ajax({
+                type: "GET",
+                url: "/index/registerMail",
+                data: {mail:mail},
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (val) {
+                    if(val){
+                        //设置重新发送定时器
+                        mailInterval = setInterval(mailQuart,1000)
+                        parent.layer.msg("已将验证码发送至您的邮箱，请注意查收。",{icon:6})
+                    }else{
+                        parent.layer.msg("该邮箱已被注册。",{icon:5})
+                    }
+
+                }
+            });
+
+        })
+        //发送邮件定时器
+        var time = 60*1000;  //60s
+        function mailQuart(){
+            if (time == 0) {
+                $("#reg_mailsend").attr("class","layui-btn layui-btn-primary")
+                $("#reg_mailsend").removeAttr("disabled")
+                $("#reg_quartz").text(" ")
+                clearInterval(mailInterval);
+                time = 60*1000;
+                return
+            }
+            if(time == 10*1000){
+                $("#reg_mailsend").attr("class","layui-btn layui-btn-primary layui-btn-disabled")
+                $("#reg_mailsend").attr("disabled",true)
+            }
+            time = time - 1000;
+            let show = time/1000;
+            $("#reg_quartz").text(show+"秒后可重新发送")
+        }
+
+        function mainQuart(status){
+            if(status){
+                window.location.href = "/main";
+                return
+            }
+            setTimeout(mainQuart,6000,true)
+
+
+        }
+    })
+
+    function canUseLogBtn() {
+        let user = $("#log_username").val()
+        let password = $("#log_password").val()
+        let validate = $("#log_validate").val()
+        if(user.endsWith("@qq.com")&&password.length>=8&&validate.length==5){
+            $("#log_submit").attr("class","layui-btn layui-btn-fluid layui-btn-normal")
+            $("#log_submit").removeAttr("disabled")
+        }else{
+            $("#log_submit").attr("class","layui-btn layui-btn-disabled layui-btn-fluid")
+            $("#log_submit").attr("disabled",true)
+        }
+    }
+
+    function canUseRegBtn() {
+        let user = $("#reg_username").val()
+        user = user.trim();
+        let password = $("#reg_password").val()
+        let repassword = $("#reg_repassword").val()
+        let mail = $("#reg_mail").val()
+        if(mail.endsWith("@qq.com")&&password.length>=8&&repassword.length>=8&&user.length>=1){
+            $("#reg_mailsend").attr("class","layui-btn layui-btn-primary")
+            $("#reg_mailsend").removeAttr("disabled")
+        }else{
+            $("#reg_mailsend").attr("class","layui-btn layui-btn-disabled")
+            $("#reg_mailsend").attr("disabled",true)
+        }
+    }
+</script>
+</html>

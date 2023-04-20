@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>微鱼舆情监测系统</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+</head>
+<style>
+    /* 防止下拉框下拉值被遮盖*/
+    .layui-table-cell {
+        overflow: visible;
+    }
+
+    .layui-table-box {
+        overflow: visible;
+    }
+
+    .layui-table-body {
+        overflow: visible;
+    }
+    /* 调整高度 */
+    td .layui-form-select{
+        margin-top: -10px;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+</style>
+<body>
+<!--标题-->
+    <div id="userManagerHead" class="layui-row" style="margin: 20px 0px;">
+        <p class="layui-col-md-offset3 layui-col-md2" style="font-size:20px;font-weight:600;padding-top:10px">监控用户管理</p>
+<!--        <button id="addGroup" class="layui-btn layui-col-md-offset4 layui-col-md1" lay-event="del">添加分组</button>-->
+    </div>
+    <div id="tableContent">
+        <table id="user" lay-filter="test"></table>
+    </div>
+</body>
+<script type="text/html" id="delete">
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+</script>
+<script type="text/html" id="updateGroup">
+    <div class="layui-form-item" style="margin-left:20px;margin-right:20px">
+        <select prop="{{d.u_id}}" id="groupOption" lay-filter="groupOption">
+            <option value="">用户分组</option>
+            <option th:value="${g.g_id}" th:utext="${g.g_name}" th:each="g,iterStat:${allGroup}"></option>
+        </select>
+    </div>
+</script>
+<script type="text/html" id="zizeng">
+    {{d.LAY_TABLE_INDEX+1}}
+</script>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:inline="javascript">
+    layui.use(['table','layer','form'], function() {
+        var table = layui.table;
+        var layer = layui.layer;
+        var form = layui.form;
+        tableIns = table.render({
+            elem: '#user'
+            , url: 'userManager/fresh'
+            , even: true
+            , cellMinWidth: 20
+            , cols: [
+                [
+                    {field: 'zizeng', title: '序号', align: "center", type: "numbers"}
+                    , {field: 'u_id', title: '用户ID', align: "center",templet:function (d) {
+                        return "<a href=\"/user/touserdetail?uid="+d.u_id+"&uname="+d.u_name+"\">"+d.u_id+"</a>";
+                    }}
+                    , {field: 'u_name', title: '用户昵称', align: "center",templet:function (d) {
+                        return "<a href=\"/user/touserdetail?uid="+d.u_id+"&uname="+d.u_name+"\">"+d.u_name+"</a>";
+                    }}
+                    , {field: 'u_hot', title: '热度', sort: true, align: "center"}
+                    , {field: 'u_blognum', title: '微博数', align: "center"}
+                    , {field: '', title: '分组名称', align: 'center',templet:function(d){
+                        return d.groupMonitor.g_name;
+                    }}
+                    , {field: 'delete',title: '监控情况',align:'center', toolbar: '#delete'}
+                    , {field: 'updateGroup',title: '更改分组',align:'center', templet: '#updateGroup'}
+                ]
+            ]
+        });
+        form.on('select(groupOption)', function(obj){
+            var elem = $(obj.elem);
+            //获取u_id  elem.context.attributes['prop'].value
+            //gid获取不到 在后台判断
+            //console.log(elem.context.attributes['propgid'])
+            //获取修改后的值   elem.val()
+            var u_id = elem.context.attributes['prop'].value
+            var modifyGroup = elem.val()
+            $.ajax({
+                type: "GET",
+                url: 'userManager/modifyGroup',
+                data: {u_id:u_id,g_id:modifyGroup},
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (val) {
+                    console.log(val)
+                    if(val.status){
+                        layer.alert(val.message,{icon: 6})
+                    }else{
+                        layer.alert(val.message,{icon: 5})
+                    }
+                    tableIns.reload({
+                        url: 'userManager/fresh'
+                    });
+                }
+            });
+
+
+        });
+        table.on('tool(test)',function(obj){
+            var data = obj.data; //获得当前行数据
+            console.log("event = "+obj.data)
+            console.log(obj)
+            layer.confirm('即将关闭对'+data.u_name+'的监控', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    layer.close(index);
+                    $.ajax({
+                        type: "GET",
+                        url: 'userManager/stopMonitor',
+                        data: {u_id:data.u_id},
+                        dataType: "json",
+                        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                        success: function () {
+                            layer.alert('已关闭对'+data.u_name+'的监控',{icon: 6})
+                            tableIns.reload({
+                                url: 'userManager/fresh'
+                            });
+                        }
+                    });
+
+
+                }
+            });
+        })
+    })
+</script>
+</html>

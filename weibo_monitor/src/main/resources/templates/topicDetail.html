@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>微鱼舆情监测系统</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+</head>
+<style type="text/css">
+    #topicHead{
+        margin-top:10px;
+        margin-left:15%;
+        margin-right:15%;
+        margin-bottom:10px;
+        padding:10px;
+    }
+    #topic_name {
+        /* margin-left: 40px; */
+        font-weight: 600;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        display: inline-block;
+        /* text-align: center; */
+    }
+    #rawUrl,.read,.discuss{
+        display: inline-block;
+        font-size:16px;
+    }
+    #total_emotion,#total_influence{
+        font-size: 20px;
+        color:#2F4056;
+        padding-bottom:8px;
+        text-align: center;
+    }
+    .singleBlog{
+        border:1px solid #eee;
+        padding: 10px;
+        background-color: #FCFCFC;
+        margin-bottom:20px;
+    }
+
+    .blogName{
+        font-size:16px;
+        font-weight:600;
+        color:#000;
+    }
+    .blogHeadEmotion{
+        font-size: 20px;
+        padding-top: 10px;
+        color:#111;
+    }
+    .blogContent{
+        margin-top:25px;
+        text-indent:2em;
+        color:#333;
+        font-size:16px;
+        margin-left:8%;
+        margin-right:10%;
+        word-wrap:break-word
+    }
+    .blogCount{
+        margin-top:25px;
+        margin-left:8%;
+        margin-right:10%;
+        margin-bottom: 30px;
+        font-size:16px;
+        color:brown;
+    }
+    .blogCount span{
+        border-right:1px solid #999;
+    }
+
+    .commentDetail {
+        height: auto;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 30px;
+        padding: 5px 10px;
+        background-color: white;
+        box-shadow: -1px -1px 2px gainsboro;
+        color: #666;
+        font-size: 12px;
+    }
+    .c_name, .c_emotion {
+        margin-bottom: 8px;
+        font-size: 14px;
+        margin-top: 8px;
+        color: #191970;
+        font-weight: bold;
+    }
+    .c_content {
+        padding: 10px 30px 10px 0px;
+        text-indent: 2em;
+    }
+    .singleComment{
+        margin: 10px 0px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+    }
+</style>
+<body>
+<div id="main">
+<!--    头部-->
+    <div id="topicHead">
+        <div class="layui-row layui-col-space30">
+            <!--头像-->
+            <div class="layui-col-md2">
+                <img id = "topicHeadImg" th:src="@{${sinaTopicBean.imgUrl}}" width="130px" height="130px"/>
+            </div>
+            <!--话题名称 是否是热门话题 阅读量 讨论量-->
+            <div class="layui-col-md5">
+                <h2 id="topic_name" th:text="${sinaTopicBean.keyword}"></h2>
+                <div>
+                    <p class="read" th:text="'阅读量: '+${sinaTopicBean.readNum}"></p>
+                    <p class="discuss" th:text="'讨论量: '+${sinaTopicBean.discuss}"></p>
+                </div>
+            </div>
+            <!--舆情评分-->
+            <div class="layui-col-md1">
+                <img id="hot_icon" th:src="@{/img/hot.png}" alt="热门" width="25px" height="25px" th:if="${#bools.isTrue(sinaTopicBean.sinaTopBean!=null)}" style="margin-top: 30px"/>
+            </div>
+            <div class="layui-col-md3" style="margin-top:30px">
+                <p id = "total_emotion" th:text="'舆情评分:'+${#numbers.formatDecimal(sinaTopicBean.finalEmotionStage,1,2)}"></p>
+<!--                <p id = "total_influence" th:text="'影响因子:'+${sinaTopicBean.finalEmotionStage}"></p>-->
+
+            </div>
+        </div>
+
+        <div class="layui-row" style="padding-bottom: 10px">
+            <div class="layui-col-md8 layui-col-space10" style="margin-top:5px">
+                <p id="rawUrl">原网站:<a style="font-size: 14px;color:#2468a2" th:href = "@{'https://s.weibo.com/weibo?q='+${sinaTopicBean.keyword}+'&xsort=hot&Refer=hotmore'}" th:text="'https://s.weibo.com/weibo?q='+${sinaTopicBean.keyword}+'&xsort=hot&Refer=hotmore'">点击进入</a></p>
+            </div>
+            <div class="layui-col-md3 layui-col-md-offset1">
+                <button id="btn_mon" type="button" class="layui-btn">开启话题监控</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-collapse" style="margin-left:15%;margin-right:15%;">
+
+        <!--统计数据-->
+        <div class="layui-colla-item">
+            <!--从es中获取今日数据-->
+            <h2 id = "today_mon" isopen="false" class="layui-colla-title monitor_title">今日数据监控</h2>
+            <div class="layui-colla-content">
+                <div class="monitor layui-tab layui-tab-card">
+                    <ul class="monitor_head layui-tab-title">
+                        <li class="layui-this" id="today_readbtn">阅读量变化</li>
+                        <li id="today_discussbtn">讨论量变化</li>
+                        <li id="today_emotionbtn">舆情变化</li>
+
+                        <!--如果是热门话题 则显示 需要获取今日热门数据-->
+                        <li id="today_hotbtn">热度变化</li>
+                        <li id="today_hotstagebtn">热度榜排名变化</li>
+                    </ul>
+                    <div class="monitor_content layui-tab-content" style="height: 400px;">
+                        <div class="layui-tab-item layui-show">
+                            <div id="today_read" style="width:700px;height:400px;margin:0 auto;"></div>
+                        </div>
+                        <div class="layui-tab-item">
+                            <div id="today_discuss" style="width:700px;height:400px;margin:0 auto;"></div>
+                        </div>
+                        <div class="layui-tab-item" >
+                            <div id="today_emotion" style="width:700px;height:400px;margin:0 auto;"></div>
+                        </div>
+                        <div class="layui-tab-item">
+                            <div id="today_hot" style="width:700px;height:400px;margin:0 auto;"></div>
+                        </div>
+                        <div class="layui-tab-item">
+                            <div id="today_hotstage" style="width:700px;height:400px;margin:0 auto;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-colla-item">
+            <!--从hive中获取历史数据+今日数据-->
+            <h2 class="layui-colla-title monitor_title">历史数据监控</h2>
+            <div class="layui-colla-content">
+                <div class="monitor layui-tab layui-tab-card">
+                    <ul class="monitor_head layui-tab-title">
+                        <li class="layui-this">阅读量变化</li>
+                        <li>讨论量变化</li>
+                        <li>舆情变化</li>
+                        <li>热度变化</li>
+                        <li>热度榜排名变化变化</li>
+                    </ul>
+                    <div class="monitor_content layui-tab-content" style="height: 100px;">
+                        <div class="layui-tab-item layui-show">阅读量当前无数据</div>
+                        <div class="layui-tab-item">评论量当前无数据</div>
+                        <div class="layui-tab-item">舆情变化当前无数据</div>
+                        <div class="layui-tab-item">热度变化当前无数据</div>
+                        <div class="layui-tab-item">热度榜排名变化当前无数据</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--热门微博-->
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title" id="hot_title">热门微博</h2>
+            <div class="layui-colla-content layui-show">
+                <div id="hotBlog">
+                    <div class="singleBlog" th:each="singleBlog,iterStat:${sinaTopicBean.hot_blog}" >
+                        <div class="blogHead layui-row layui-col-space10">
+                            <div class="layui-col-md1">
+                                <img class="blogHeadImg" th:src="@{${singleBlog.imgUrl}}" alt="头像" width="50px" height="50px"/>
+                            </div>
+                            <div class="layui-col-md3" style="margin-top: 5px">
+                                <a class="blogName" th:href="@{/user/touserdetail(uid=${singleBlog.uid},uname=${singleBlog.name})}"th:text="${singleBlog.name}">指摘星辰</a>
+                                <p class="pubtime" th:text="${singleBlog.pub_time}" style="margin-top: 4px"></p>
+                            </div>
+                            <div class="blogHeadEmotion layui-col-md2 layui-col-md-offset3">
+                                <!--开心-->
+                                <p th:if="${#bools.isTrue(singleBlog.emotion>0.9)}">情感倾向 &#128516;</p>
+                                <!--中立-->
+                                <p th:if="${#bools.isTrue(singleBlog.emotion<0.9 and singleBlog.emotion>0.1)}">情感倾向 &#128528;</p>
+                                <!--难过-->
+                                <p th:if="${#bools.isTrue(singleBlog.emotion<0.1)}">情感倾向 &#128542;</p>
+                            </div>
+                        </div>
+                        <div class="blogContent">
+                            <p th:text="${singleBlog.context}"></p>
+                        </div>
+
+                        <div class="blogCount layui-row">
+                            <!--在这里不提供微博监控详细信息  点击微博监控 会跳转至微博详细信息界面-->
+                            <span class="blogMonitor layui-col-md2"><a th:href="@{/blog/detail(uid=${singleBlog.uid},mid=${singleBlog.mid})}" th:text="监控话题"></a></span>
+                            <span class="blogTransfer layui-col-md2 layui-col-md-offset1" th:text="'转发:'+${singleBlog.transfer}"></span>
+                            <span class="blogComments layui-col-md2 layui-col-md-offset1"><a th:target="${singleBlog.mid}" th:text="'评论:'+${singleBlog.comments_num}" style="cursor: pointer"></a></span>
+                            <span class="blogLike layui-col-md2 layui-col-md-offset1" th:text="'&#9829;:'+${singleBlog.like}"></span>
+                        </div>
+                        <!--查看评论数据-->
+                        <!--查看评论数据-->
+                        <div class="commentDetail" hidden th:id="${singleBlog.mid}"></div>
+                        <p style="font-size:14px">原网站 <a th:href="@{${singleBlog.myUrl}}" style="color:#2468a2" th:text="${singleBlog.myUrl}">www.baidu.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+<!--layui script-->
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.use('element',function(){
+        var elem = layui.element;
+    })
+</script>
+
+<script th:inline="javascript">
+    var todayList = [];
+    var todayHotTopicList = [];
+    //今日数据统计
+    var todayRead = null;
+    var todayDiscuss = null;
+    var todayEmotion = null;
+    var todayHot = null;
+    var todayHotStage = null;
+    //判断话题是否被监控
+    function checkTopicMonBtn(){
+        //为按钮着色
+        var isMon = [[${isMon}]];
+        console.log("isMon = "+isMon)
+        $("#btn_mon").attr("mon",isMon);
+        if(isMon){
+            //如果监控，则按钮是红色
+            $("#btn_mon").attr("class","layui-btn layui-btn-danger")
+            $("#btn_mon").text("关闭话题监控")
+        }else{
+            //如果没有监控，则按钮是绿色
+            $("#btn_mon").attr("class","layui-btn")
+            $("#btn_mon").text("开启话题监控")
+        }
+    }
+    $(document).ready(function(){
+        checkTopicMonBtn();
+        //获取统计需要的数据 位置1
+        getTodayData();
+        getTodayHotTopic();
+
+        //控制iframe
+        $(".blogComments").click(function(){
+            //注意：这个错误 我们使用$(".blogComments")获取到多个对象，并不是想象中的单个对象，改进：$(this)
+            //var mid = $(".blogComments").children("a")
+            let mid = $(this).children("a").attr("target")
+            let commentDiv = $('#'+mid)
+            let temp = commentDiv.attr("hidden")
+            if(typeof temp == "undefined"){
+                commentDiv.attr("hidden",true)
+            }else{
+                commentDiv.removeAttr("hidden")
+                //在这里获取评论信息
+                //判断commentdiv是否有子节点 如果有子节点则不发送请求，否则发送请求
+                console.log("子节点 = "+commentDiv.children().length);
+                if(commentDiv.children().length==0){
+                    $.ajax({
+                        type: "GET",
+                        url: "/blog/comments",
+                        data: {mid:mid},
+                        dataType: "json",
+                        success: function(val){
+                            console.log("val = "+JSON.stringify(val))
+                            let str = "";
+                            for(let i=0;i<val.length;i++){
+                                let comment = val[i];
+                                str += "<div class=\"singleComment\">\n" +
+                                    "       <div class=\"layui-row\">\n" +
+                                    "           <div class=\"layui-col-md1\">\n" +
+                                    "               <img src=\""+comment.user.imgUrl+"\" width=\"40px\" height=\"40px\">\n" +
+                                    "           </div>\n" +
+                                    "           <p class=\"c_name layui-col-md4\">"+comment.user.username+"</p>\n" +
+                                    "           <p class=\"c_emotion layui-col-md-offset5 layui-col-md2\">舆情评分:<em style=\"font-weight:bold;font-style: normal;color: brown;font-size: 14px;\">"+comment.emotion.toFixed(2)+"</em></p>\n" +
+                                    "       </div>\n" +
+                                    "       <div class=\"c_content\" >"+comment.context+"</div>\n" +
+                                    "            <div class=\"layui-row c_third\">\n" +
+                                    "                 <div class=\"c_time layui-col-md2\">"+comment.pub_time+"</div>\n" +
+                                    "                 <div class=\"c_like layui-col-md-offset8 layui-col-md2\">✊<em style=\"padding-left:5px;font-style: normal;color: brown;font-size: 13px; font-weight: bold\" >"+comment.like+"</em></div>\n" +
+                                    "             </div>\n" +
+                                    "   </div>";
+                            }
+                            //追加
+                            commentDiv.append(str);
+                        }
+                    });
+
+                }
+            }
+        })
+
+        //话题监控按钮
+        $("#btn_mon").click(function(){
+            if ($("#btn_mon").attr("mon") == "false") {
+                //当前处于未监控状态-->监控状态
+                $("#btn_mon").attr("mon", "true")
+                $("#btn_mon").text("关闭话题监控")
+                $('#btn_mon').attr("class", "layui-btn layui-btn-danger")
+
+            } else if ($("#btn_mon").attr("mon") == "true") {
+                //当前处于监控状态-->未监控状态
+                $("#btn_mon").attr("mon", "false")
+                $("#btn_mon").text("开启话题监控")
+                $('#btn_mon').attr("class", "layui-btn")
+            }
+            //使用ajax进行监控处理
+            $.ajax({
+                type: "GET",
+                url: "/topic/monitor",
+                data: {mon:$("#btn_mon").attr("mon"),topicName:[[${sinaTopicBean.keyword}]]},
+                dataType: "json",
+                contentType:"application/x-www-form-urlencoded; charset=utf-8",
+                success: function(val){
+
+                }
+            });
+
+        })
+
+        //点击话题监控
+        $("#today_mon").click(function(){
+            if($("#today_mon").attr("isopen") == "false"){
+                todayReadStat()
+                $("#today_mon").attr("isopen","true")
+            }else if($("#today_mon").attr("isopen") == "true"){
+                //更新统计需要的数据 位置2
+                getTodayData();
+                getTodayHotTopic();
+                $("#today_mon").attr("isopen","false")
+            }
+        })
+
+        //阅读数量监控
+        $("#today_readbtn").click(function () {
+            //由于阅读量是第一个元素，因此我们把阅读量监控全部委托给了父容器#today_mon
+            todayReadStat()
+        })
+
+        //讨论数量监控
+        $("#today_discussbtn").click(function () {
+            todayDiscussStat()
+        })
+
+        //舆情监控
+        $("#today_emotionbtn").click(function () {
+            todayEmotionStat()
+        })
+
+        //热度监控
+        $("#today_hotbtn").click(function(){
+            todayHotStat()
+        })
+
+        //热度排名监控
+        $("#today_hotstagebtn").click(function(){
+            todayHotStageStat()
+        })
+
+    })
+
+
+    //从es中获取今日该话题数据
+    function getTodayData(){
+        $.ajax({
+            type: "GET",
+            url: "/topic/today",
+            data: {keyword:[[${sinaTopicBean.keyword}]]},
+            dataType: "json",
+            contentType:"application/x-www-form-urlencoded; charset=utf-8",
+            success: function(val){
+                todayList = val
+                console.log("todayList="+val)
+            }
+        });
+    }
+
+    //从es中获取指定热搜数据
+    function getTodayHotTopic(){
+        $.ajax({
+            type: "GET",
+            url: "/hot/getHotOne",
+            data: {content:[[${sinaTopicBean.keyword}]]},
+            dataType: "json",
+            contentType:"application/x-www-form-urlencoded; charset=utf-8",
+            success: function(val){
+                console.log("val = "+val)
+                todayHotTopicList = val
+            }
+        });
+    }
+
+    //今日阅读量数据
+    function todayReadStat(){
+        if(todayList.length>0){
+            todayRead = echarts.init(document.getElementById('today_read'));
+            //关于x轴
+            var timeList = [];
+            var readNumList = [];
+            for(var index in todayList){
+                let time = todayList[index].current_date;
+                let time_date = timeToDate(time);
+                sfm = time_date["sfm"]
+                timeList.push(sfm)
+
+                //阅读数量处理
+                let readRaw = todayList[index].readNum
+                let readNum = transferCount(readRaw);
+                readNumList.push(readNum)
+            }
+            var option1 = ReadLineOption(timeList,readNumList,"阅读")
+            todayRead.setOption(option1);
+        }else{
+            $('#today_read').text("暂无历史数据")
+        }
+    }
+
+    //今日讨论数量
+    function todayDiscussStat(){
+        if(todayList.length>0){
+            todayDiscuss = echarts.init(document.getElementById('today_discuss'));
+            //关于x轴
+            var timeList = [];
+            var discussNumList = [];
+            for(var index in todayList){
+                let time = todayList[index].current_date;
+                let time_date = timeToDate(time);
+                sfm = time_date["sfm"]
+                timeList.push(sfm)
+
+                //讨论数量处理
+                let discussRaw = todayList[index].discuss
+                //删除＋号
+                discussRaw = String(discussRaw).replaceAll('+','');
+                //discuss数据不多 因此不需要缩小万处理
+                //但是数据本身 包含万字 我们需要进行转换
+                if(discussRaw.charAt(discussRaw.length-1) == "万"){
+                    discussRaw = Number(discussRaw.substring(0,discussRaw.length-1))*10000;
+                }
+                //let discussNum = transferCount(discussRaw);
+                discussNumList.push(discussRaw)
+            }
+            var option2 = discussEmotionAndHotLineOption(timeList,discussNumList,"讨论")
+            todayDiscuss.setOption(option2);
+        }else{
+            $('#today_discuss').text("暂无历史数据")
+        }
+    }
+
+    //舆情变化
+    function todayEmotionStat(){
+        if(todayList.length>0){
+            todayEmotion = echarts.init(document.getElementById('today_emotion'));
+            //关于x轴
+            var timeList = [];
+            var emotionNumList = [];
+            for(var index in todayList){
+                let time = todayList[index].current_date;
+                let time_date = timeToDate(time);
+                sfm = time_date["sfm"]
+                timeList.push(sfm)
+
+                //舆情处理
+                let emotion = todayList[index].finalEmotionStage
+                emotionNumList.push(emotion)
+            }
+            console.log("情感得分="+emotionNumList)
+            console.log("time="+timeList)
+            var option3 = discussEmotionAndHotLineOption(timeList,emotionNumList,"舆情得分")
+            todayEmotion.setOption(option3);
+        }else{
+            $('#today_emotion').text("暂无历史数据")
+        }
+    }
+
+    //热度变化
+    function todayHotStat(){
+        //如果该话题今日出现在热榜之中
+        if(todayHotTopicList.length>0){
+            todayHot = echarts.init(document.getElementById("today_hot"));
+            let timeList=[]
+            let dataList=[]
+            for(var index in todayHotTopicList){
+                //获取时间
+                let hotTopic = todayHotTopicList[index]
+                let time = hotTopic.current_date;
+                let time_date = timeToDate(time);
+                let sfm = time_date['sfm']
+                timeList.push(sfm)
+
+                //获取热搜数量
+                let hotCount = hotTopic.access_count
+                dataList.push(hotCount)
+            }
+            var option4 = discussEmotionAndHotLineOption(timeList,dataList,"热度")
+            todayHot.setOption(option4);
+        }else{
+            $("#today_hot").text("抱歉,该话题今日未上榜!")
+        }
+    }
+
+    //热度排名变化
+    function todayHotStageStat(){
+        //如果该话题今日出现在热榜之中
+        if(todayHotTopicList.length>0){
+            todayHotStage = echarts.init(document.getElementById("today_hotstage"));
+            let timeList=[]
+            let dataList=[]
+            for(var index in todayHotTopicList){
+                let hotTopic = todayHotTopicList[index]
+                let time = hotTopic.current_date;
+                let time_date = timeToDate(time);
+                let sfm = time_date['sfm']
+                timeList.push(sfm)
+
+                let stage = hotTopic.stage
+                dataList.push(stage)
+            }
+            var option5 = hotStageLineOption(timeList,dataList,"排名")
+            todayHotStage.setOption(option5);
+        }else{
+            $("#today_hotstage").text("抱歉,该话题今日未上榜!")
+        }
+    }
+
+    //阅读量折线统计图
+    function ReadLineOption(xList,alldata){
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: xList
+            },
+            yAxis: {
+                type: 'value',
+                // interval:1,
+                // minInterval:0,
+                axisLabel: {
+                    formatter: '{value} w'
+                }
+            },
+            series: [{
+                data: alldata,
+                type: 'line',
+                showSymbol: true,
+            }]
+        };
+        return option;
+    }
+
+    //讨论数量、情感趋向、热度统计图
+    function discussEmotionAndHotLineOption(xList,alldata,c_name){
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: xList
+            },
+            yAxis: {
+                type: 'value',
+                // interval:1,
+                // minInterval:0,
+            },
+            series: [{
+                name:c_name,
+                data: alldata,
+                type: 'line',
+                showSymbol: true,
+            }]
+        };
+        return option;
+    }
+
+    function hotStageLineOption(xList,alldata,c_name){
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: xList
+            },
+            yAxis: {
+                inverse:true,
+                type: 'value',
+                interval:5,
+            },
+            series: [{
+                name:c_name,
+                data: alldata,
+                type: 'line',
+                showSymbol: false,
+                label: {
+                    show: true,
+                    position: 'top'
+                },
+            }]
+        };
+        return option;
+    }
+    //热门话题排名统计图
+    //从时间戳之中获取时间日期
+    function timeToDate(time){
+        var date = new Date();
+        date.setTime(time);
+        //获取年月日
+        var nyr = date.toLocaleDateString();
+        //获取时间
+        var sfm = date.toTimeString();
+
+        return {'nyr':nyr,'sfm':sfm.substring(0,8)}
+    }
+
+    function transferCount(readRaw){
+        //先删除+
+        readRaw = readRaw.replace("+","")
+        switch (readRaw.charAt(readRaw.length-1)){
+            case "万":
+                return parseFloat(readRaw.substring(0,readRaw.length-1));
+            case "亿":
+                return Number(readRaw.substring(0,readRaw.length-1))*10000;
+            default:
+                return parseFloat(readRaw.substring(0,readRaw.length))/10000;
+
+        }
+    }
+</script>
+</html>

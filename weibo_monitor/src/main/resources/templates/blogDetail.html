@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>微鱼舆情监测系统</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+</head>
+<style>
+    #main{
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    #hotBlog{
+        border:1px solid #eee;
+        padding: 10px 5%;
+        background-color: #FCFCFC;
+        margin-bottom:20px;
+    }
+
+    .blogName{
+        font-size:16px;
+        font-weight:600;
+        color:#000;
+    }
+    .blogHeadEmotion{
+        font-size: 20px;
+        padding-top: 10px;
+        color:#111;
+    }
+    .blogContent{
+        margin-top:25px;
+        text-indent:2em;
+        color:#333;
+        font-size:16px;
+        word-wrap:break-word
+    }
+    .blogCount{
+        margin-top:25px;
+        margin-left:8%;
+        margin-right:10%;
+        margin-bottom: 30px;
+        font-size:16px;
+        /*color:brown;*/
+    }
+
+    .blogCount span{
+        border-right:1px solid #999;
+    }
+    .blogMonitor:hover {
+        color: #666;
+    }
+    .commentDetail {
+        height: auto;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 30px;
+        padding: 5px 10px;
+        background-color: white;
+        box-shadow: -1px -1px 2px gainsboro;
+        color: #666;
+        font-size: 12px;
+    }
+    .c_name, .c_emotion {
+        margin-bottom: 8px;
+        font-size: 14px;
+        margin-top: 8px;
+        color: #191970;
+        font-weight: bold;
+    }
+    .c_content {
+        padding: 10px 30px 10px 0px;
+        text-indent: 2em;
+    }
+    .singleComment{
+        margin: 10px 0px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+    }
+</style>
+<body>
+    <div id="main">
+        <div id="hotBlog">
+            <div class="blogHead layui-row layui-col-space10">
+                <div class="layui-col-md1">
+                    <img class="blogHeadImg" th:src="@{${sinaBlog.imgUrl}}" alt="头像" width="50px" height="50px"/>
+                </div>
+                <div class="layui-col-md3" style="margin-top: 5px">
+                    <a class="blogName" th:href="@{/user/touserdetail(uid=${sinaBlog.uid},uname=${sinaBlog.name})}"th:text="${sinaBlog.name}">指摘星辰</a>
+                    <p class="pubtime" th:text="${sinaBlog.pub_time}" style="margin-top: 4px"></p>
+                </div>
+                <div class="blogHeadEmotion layui-col-md2 layui-col-md-offset3">
+                    <!--开心-->
+                    <p th:if="${#bools.isTrue(sinaBlog.emotion>0.9)}">情感倾向 &#128516;</p>
+                    <!--中立-->
+                    <p th:if="${#bools.isTrue(sinaBlog.emotion<0.9 and sinaBlog.emotion>0.1)}">情感倾向 &#128528;</p>
+                    <!--难过-->
+                    <p th:if="${#bools.isTrue(sinaBlog.emotion<0.1)}">情感倾向 &#128542;</p>
+                </div>
+            </div>
+            <div class="blogContent">
+                <p th:text="${sinaBlog.context}"></p>
+            </div>
+
+            <div class="blogCount layui-row">
+                <!--在这里不提供微博监控详细信息  点击微博监控 会跳转至微博详细信息界面-->
+                <span class="blogMonitor layui-col-md2" style="cursor: pointer"></span>
+                <span class="blogTransfer layui-col-md2 layui-col-md-offset1" th:text="'转发:'+${sinaBlog.transfer}"></span>
+                <span class="blogComments layui-col-md2 layui-col-md-offset1" style="cursor: pointer"><a th:text="'评论:'+${sinaBlog.comments_num}" th:target="${sinaBlog.mid}"></a></span>
+                <span class="blogLike layui-col-md2 layui-col-md-offset1" th:text="'&#9829;:'+${sinaBlog.like}" style="border-right:0px"></span>
+            </div>
+            <!--查看评论数据-->
+            <div class="commentDetail" hidden th:id="${sinaBlog.mid}">
+                <div class="singleComment" th:each="comment,iterStat:${sinaComments}">
+                    <div class="layui-row">
+                        <div class="layui-col-md1">
+                            <img th:src="@{${comment.user.imgUrl}}" width="40px" height="40px">
+                        </div>
+                        <p class="c_name layui-col-md4" th:text="${comment.user.username}"></p>
+                        <p class="c_emotion layui-col-md-offset5 layui-col-md2">舆情评分:<em style="font-weight:bold;font-style: normal;color: brown;font-size: 14px;" th:text="${#numbers.formatDecimal(comment.emotion,1,2)}">0.97</em></p>
+                    </div>
+                    <div class="c_content" th:text="${comment.context}"></div>
+                    <div class="layui-row c_third">
+                        <div class="c_time layui-col-md2" th:text="${comment.pub_time}">12-21 3:55</div>
+                        <div class="c_like layui-col-md-offset8 layui-col-md2">✊<em style="padding-left:5px;font-style: normal;color: brown;font-size: 13px; font-weight: bold" th:text="${comment.like}">9999999</em></div>
+                    </div>
+                </div>
+            </div>
+            <p style="font-size:14px">原网站 <a th:href="@{${sinaBlog.myUrl}}" style="color:#2468a2" th:text="${sinaBlog.myUrl}">www.baidu.com</a></p>
+        </div>
+        <div class="monitor_stat layui-tab layui-tab-card">
+            <ul class="monitor_head layui-tab-title">
+                <li class="layui-this" id="blog_transfer">转发量变化</li>
+                <li id="blog_comment">评论量变化</li>
+                <li id="blog_like">点赞变化</li>
+                <li id="blog_emotion">话题综合舆情变化</li>
+            </ul>
+            <div class="monitor_content layui-tab-content" style="height: 400px;">
+                <div class="layui-tab-item layui-show">
+                    <div id="transfer_div" style="width:700px;height:400px;margin:0 auto;"></div>
+                </div>
+
+                <div class="layui-tab-item">
+                    <div id="comment_div" style="width:700px;height:400px;margin:0 auto;"></div>
+                </div>
+
+                <div class="layui-tab-item" >
+                    <div id="like_div" style="width:700px;height:400px;margin:0 auto;"></div>
+                </div>
+
+                <div class="layui-tab-item">
+                    <div id="emotion_div" style="width:700px;height:400px;margin:0 auto;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--追加时间-->
+    <div id="addForm" hidden style="margin: 20px 15%">
+        <div class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">时间阈值: </label>
+                <div class="layui-input-block">
+                    <input type="number" id="freshTime" required placeholder="请输入监控时间阈值[5分钟,60分钟]" min=1 max=60 class="layui-input" style="-webkit-appearance: none;-moz-appearance:textfield;">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!--layui script-->
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.use(['element','layer','form'],function(){
+        var elem = layui.element;
+        var layer = layui.layer;
+        var form = layui.form
+    })
+</script>
+<script th:inline="javascript">
+    $(document).ready(function () {
+        //判断当前用户是否被监控
+        judgeMonitor();
+
+        //对blogData数据进行划分
+        var blogData = splitBlogData();
+        //默认显示转发量统计
+        transferStat(blogData.time,blogData.transferData,"转发量");
+
+        //控制iframe
+        $(".blogComments").click(function(){
+            console.log("点击事件")
+            //注意：这个错误 我们使用$(".blogComments")获取到多个对象，并不是想象中的单个对象，改进：$(this)
+            //var mid = $(".blogComments").children("a")
+            let mid = $(this).children("a").attr("target")
+            let commentDiv = $('#'+mid)
+            let temp = commentDiv.attr("hidden")
+            if(typeof temp == "undefined"){
+                commentDiv.attr("hidden",true)
+            }else{
+                commentDiv.removeAttr("hidden")
+            }
+        })
+
+        //微博话题监控
+        $(document).on('click','.blogMonitor',function(){
+            console.log("微博监控点击事件")
+            let sinaBlog = [[${sinaBlog}]]
+            let blogMysql = {};
+            blogMysql.mid = Number(sinaBlog.mid);
+            blogMysql.uid = Number(sinaBlog.uid);
+            blogMysql.name = sinaBlog.name;
+
+            let mon = $(".blogMonitor").attr("isMon")
+            if(mon == "true"){
+                blogMysql.time = 0;
+                //关闭监控
+                $(".blogMonitor").attr("isMon","false");
+                mon = "false"
+                $.ajax({
+                    type: "GET",
+                    url: "/blog/monitorControl",
+                    data: {isOpen:"false",blogMysqlStr:JSON.stringify(blogMysql)},
+                    dataType: "json",
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    success: function () {
+                    }
+                });
+                layer.msg('用户监控已关闭', {icon: 6});
+                $(".blogMonitor").attr("isMon",mon)
+                $(".blogMonitor").text("打开监控");
+                $(".blogMonitor").css("color","#000");
+            }else{
+                //打开监控
+                mon = "true"
+                layer.open({
+                    type: 1,
+                    title: '设置更新时间阈值',
+                    area:['40%','30%'],
+                    btn: ['确定', '取消'],
+                    content: $('#addForm'),
+                    yes:function(index){
+                        var freshtime = $("#freshTime").val();
+                        if(freshtime!=""){
+                            //更新时间
+                            if(freshtime>60||freshtime<1) {
+                                return
+                            }else{
+                                blogMysql.time = Number(freshtime);
+                                blogMysql.ismon = 1;
+                                $.ajax({
+                                    type: "GET",
+                                    url: "/blog/monitorControl",
+                                    data: {isOpen:"true",blogMysqlStr:JSON.stringify(blogMysql)},
+                                    dataType: "json",
+                                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                                    success: function () {
+                                    }
+                                });
+                                layer.close(index);
+                                layer.msg('用户监控已打开', {icon: 6});
+                                $(".blogMonitor").text("关闭监控");
+                                $(".blogMonitor").css("color","brown");
+                                $(".blogMonitor").attr("isMon",mon)
+                            }
+                        }
+                    }
+                });
+
+            }
+
+        })
+
+        //转发
+        $(document).on('click','#blog_transfer',function () {
+            transferStat(blogData.time,blogData.transferData,"转发量");
+        })
+        //评论
+        $(document).on('click','#blog_comment',function () {
+            commentStat(blogData.time,blogData.commentData,"评论量");
+        })
+        //点赞
+        $(document).on('click','#blog_like',function () {
+            likeStat(blogData.time,blogData.likeData,"点赞量");
+        })
+        //点赞
+        $(document).on('click','#blog_emotion',function () {
+            emotionStat(blogData.time,blogData.emotionData,"舆情积极度");
+        })
+    })
+
+    function judgeMonitor() {
+        let mon = [[${blogMonitor}]]
+        if(mon == null){
+            $(".blogMonitor").attr("isMon","false")
+            $(".blogMonitor").text("打开监控");
+            $(".blogMonitor").css("color","#000");
+        }else{
+            $(".blogMonitor").attr("isMon","true")
+            $(".blogMonitor").text("关闭监控");
+            $(".blogMonitor").css("color","brown");
+        }
+    }
+
+    function splitBlogData(){
+        let blogDatas = [[${blogData}]]
+        let blogData = {};
+        let time = [];
+        let transferData = [];
+        let commentData = [];
+        let likeData = [];
+        let emotionData = [];
+        for(let i = 0;i<blogDatas.length;i++){
+            let bd = blogDatas[i];
+            //时间
+            var date = new Date();
+            date.setTime(bd.current_date)
+            time.push(date.toLocaleDateString()+" "+date.toTimeString().substring(0,8))
+            transferData.push(bd.transfer);
+            commentData.push(bd.comments);
+            likeData.push(bd.like);
+            emotionData.push(bd.totalEmotion);
+        }
+        blogData.time = time;
+        blogData.transferData = transferData;
+        blogData.commentData = commentData;
+        blogData.likeData = likeData;
+        blogData.emotionData = emotionData;
+        return blogData;
+    }
+
+    function transferStat(x,y,title){
+        let transfer = echarts.init(document.getElementById('transfer_div'));
+        let option = getDataOption(x,y,title)
+        transfer.setOption(option);
+    }
+
+    function commentStat(x,y,title){
+        let comment = echarts.init(document.getElementById('comment_div'));
+        let option = getDataOption(x,y,title)
+        comment.setOption(option);
+    }
+
+    function likeStat(x,y,title){
+        let like = echarts.init(document.getElementById('like_div'));
+        let option = getDataOption(x,y,title)
+        like.setOption(option);
+    }
+
+    function emotionStat(x,y,title){
+        let emotion = echarts.init(document.getElementById('emotion_div'));
+        let option = getDataOption(x,y,title);
+        emotion.setOption(option);
+    }
+    //阅读量折线统计图
+    function getDataOption(xList,alldata,c_name){
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: xList
+            },
+            yAxis: {
+                type: 'value',
+                // interval:1,
+                // minInterval:0,
+            },
+            series: [{
+                name:c_name,
+                data: alldata,
+                type: 'line',
+                showSymbol: true,
+            }]
+        };
+        return option;
+    }
+</script>
+</html>

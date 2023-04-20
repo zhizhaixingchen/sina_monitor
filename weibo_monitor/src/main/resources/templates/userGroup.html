@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>微鱼舆情监测系统</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+</head>
+
+<body>
+<!--        进行用户分组-->
+<div id="groupHead" class="layui-row" style="margin: 20px 0px;">
+    <p class="layui-col-md-offset3 layui-col-md2" style="font-size:20px;font-weight:600;padding-top:10px">用户分组管理</p>
+    <button id="addGroup" class="layui-btn layui-col-md-offset4 layui-col-md1" lay-event="del">添加分组</button>
+</div>
+<div id="addForm" style="padding:20px 50px" hidden>
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">分组名称</label>
+            <div class="layui-input-block">
+                <input type="text" id="groupname" required placeholder="请输入分组名称" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">刷新时间</label>
+            <div class="layui-input-block">
+                <input type="number" id="freshTime" required placeholder="请输入刷新时间(单位:秒;[60,3600])" min=60 max=3600 class="layui-input" style="-webkit-appearance: none;-moz-appearance:textfield;">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">最大组成员</label>
+            <div class="layui-input-block">
+                <input type="number" id="max_num" required placeholder="请输入最大组成员数目" min=1 max=20 class="layui-input" style="-webkit-appearance: none;-moz-appearance:textfield;">
+            </div>
+        </div>
+    </form>
+</div>
+<div id="tableContent">
+    <table id="group" lay-filter="test"></table>
+</div>
+</body>
+<script type="text/html" id="delete">
+    <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</a>
+</script>
+
+<script type="text/html" id="zizeng">
+    {{d.LAY_TABLE_INDEX+1}}
+</script>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:inline="javascript">
+    layui.use(['table','layer','form'], function(){
+        var table = layui.table;
+        var layer = layui.layer;
+        var form = layui.form;
+        tableIns = table.render({
+            elem: '#group'
+            ,data: [[${allGroup}]]
+            ,even:true
+            ,cellMinWidth:20
+            ,cols: [
+                [
+                    {field: 'zizeng', title: '序号',align:"center",type:"numbers"}
+                    ,{field: 'g_name', title: '分组名称',align:"center",edit:'text'}
+                    ,{field: 'g_time', title: '刷新时间',sort:true,align:"center",edit:'text'}
+                    ,{field: 'g_user_nummax', title: '最大用户数目',sort:true,align:"center",edit:'text'}
+                    ,{field: 'g_user_numcur', title: '当前用户数目',sort:true,align:"center"}
+                    ,{field: 'delete',title: '删除分组',align:'center', toolbar: '#delete'}
+                ]
+            ]
+        });
+        table.on('edit(test)', function(obj){
+            //修改前的值
+            var oldText = $(this).prev().text();
+            var data = obj.data;
+            if(obj.field == "g_time"){
+                if(obj.value>3600){
+                    layer.alert('更新时间过长',{icon: 5})
+                    $(this).val(oldText)
+                    return
+                }else if(obj.value<=0){
+                    layer.alert('更新时间输入有误',{icon: 5})
+                    $(this).val(oldText)
+                    return
+                }else if(obj.value<60&&obj.value>0){
+                    layer.alert('更新时间过短',{icon: 5})
+                    $(this).val(oldText)
+                    return
+                }
+                layer.confirm('修改时间将会导致分组中现有用户与后添加用户更新时间不同', {
+                    time: 0,
+                    title:'警告'
+                    ,btn: ['我已了解风险']
+                    ,function(index){
+                        layer.close(index);
+                    }
+                });
+            }
+
+            if(obj.field == "g_user_nummax"){
+                if(obj.value>20){
+                    layer.alert('做多设定20个用户',{icon: 5})
+                    $(this).val(oldText)
+                    return
+                }else if(obj.value<=0){
+                    layer.alert('分组数目输入有误',{icon: 5})
+                    $(this).val(oldText)
+                    return
+                }
+            }
+            $.ajax({
+                type: "GET",
+                url: "/group/editGroup",
+                data: {g_id:data.g_id,field:obj.field,value:obj.value},
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (val) {
+                    if(val.status){
+                        layer.alert(val.message,{icon: 6})
+                    }else{
+                        layer.alert(val.message,{icon: 5})
+                        tableIns.reload({
+                            url: 'group/fresh'
+                        });
+                    }
+                }
+            });
+        });
+
+        //执行删除操作
+        table.on('tool(test)',function(obj){
+            var data = obj.data; //获得当前行数据
+            layer.confirm('删除操作无法恢复？', {
+                time: 0
+                ,btn: ['我确定', '再想想']
+                ,yes: function(index){
+                    layer.close(index);
+                    if(data.g_id == 1){
+                        //默认分组不能删除
+                        layer.alert('默认分组不能删除，删除失败!!',{icon: 5})
+                    }else{
+                        if(data.g_user_numcur!=0){
+                            layer.alert('当前分组内尚有用户，删除失败!!',{icon: 5})
+                        }else{
+                            $.ajax({
+                                type: "GET",
+                                url: "/group/deleteGroup",
+                                data: {key:data.g_id},
+                                dataType: "json",
+                                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                                success: function (val) {
+                                    layer.alert(data.g_name+'分组删除成功',{icon: 6})
+                                    tableIns.reload({
+                                        url: 'group/fresh'
+                                    });
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+        })
+    });
+</script>
+<script th:inline="javascript">
+    $(document).ready(function(){
+        $('#addGroup').click(function () {
+            //页面层-自定义
+            layer.open({
+                type: 1,
+                title: '新增',
+                area:['40%','50%'],
+                btn: ['确定', '取消'],
+                content: $('#addForm'),
+                yes:function(index){
+                    var groupname = $("#groupname").val();
+                    var freshtime = $("#freshTime").val();
+                    var maxnum = $("#max_num").val();
+
+                    if(groupname!=""&freshtime!=""&maxnum!=""){
+                        //更新时间
+                        if(freshTime>3600||freshtime<60||maxnum>20||maxnum<=0) {
+                            return
+                        }else{
+                            $.ajax({
+                                type: "GET",
+                                url: "/group/addGroup",
+                                data: {groupname:groupname,freshtime:freshtime,maxnum:maxnum},
+                                dataType: "json",
+                                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                                success: function (val) {
+                                    if(val["status"]){
+                                        tableIns.reload({
+                                            url: 'group/fresh'
+                                        });
+                                        layer.alert('分组添加成功', {icon: 6});
+                                    }else {
+                                        layer.alert(val["message"],{icon: 5})
+                                    }
+                                }
+                            });
+                            layer.close(index);
+                        }
+                    }
+
+                }
+            });
+
+
+        })
+    })
+</script>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>微鱼舆情监测系统</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+</head>
+<body class="layui-layout-body close-footer">
+<div class="layui-layout layui-layout-admin">
+    <!--  顶部  -->
+    <div class="layui-header">
+        <div class="layui-logo">
+            <img th:src="@{/img/logo.png}" width="50px" height="20px">
+            微鱼
+        </div>
+
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <!-- 左侧 -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a th:href="@{/main}">控制台</a></li>
+            <!--如果用户不具有admin管理权限则不显示-->
+            <li class="layui-nav-item" th:if="${#bools.isTrue(session.loginuser.admin == 1)}"><a th:href="@{/loginuser}" target="mainFrame">用户管理</a></li>
+            <li class="layui-nav-item"><a href="javascript:;">监控管理</a>
+                <dl class="layui-nav-child">
+                    <!--如果用户不具有topic管理权限则不显示-->
+                    <dd th:if="${#bools.isTrue(session.loginuser.topic == 1)}">
+                        <a th:href="@{/topicMonitorIndex}" target="mainFrame">话题监控</a>
+                    </dd>
+                    <!--如果用户不具有user管理权限则不显示-->
+                    <dd th:if="${#bools.isTrue(session.loginuser.user == 1)}">
+                        <a th:href="@{/userManager}" target="mainFrame">用户监控</a>
+                    </dd>
+                    <!--如果用户不具有blog管理权限则不显示-->
+                    <dd th:if="${#bools.isTrue(session.loginuser.blog == 1)}">
+                        <a th:href="@{/blog}" target="mainFrame">微博监控</a>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+        <!-- 右侧 -->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item"><a href="javascript:;" th:text="${session.loginuser.name}">指摘星辰</a></li>
+            <li class="layui-nav-item"><a th:href="@{/exit}">注销</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-shrink="all">
+                <!--微博话题-->
+                <li class="layui-nav-item layui-nav-itemed" >
+                    <a class="" href="javascript:;">微博话题</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a th:href="@{/hot}" target="mainFrame">实时热点</a>
+                        </dd>
+                        <dd>
+                            <a th:href="@{/topicScanIndex}" target="mainFrame">话题搜索</a>
+                        </dd>
+                        <dd th:if="${#bools.isTrue(session.loginuser.topic == 1)}">
+                            <a th:href="@{/topicMonitorIndex}" target="mainFrame">话题监控</a>
+                        </dd>
+                        <dd>
+                            <a th:href="@{/topic/statIndex}" target="mainFrame">今日总览</a>
+                        </dd>
+                    </dl>
+                </li>
+                <!--微博用户-->
+                <li class="layui-nav-item">
+                    <a href="javascript:;">微博用户</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a th:href="@{/userStat}" target="mainFrame">信息汇总</a>
+                        </dd>
+                        <dd>
+                            <a th:href="@{/user/userIndex}" target="mainFrame">用户搜索</a>
+                        </dd>
+                        <dd th:if="${#bools.isTrue(session.loginuser.user == 1)}">
+                            <a th:href="@{/group}" target="mainFrame">分组管理</a>
+                        </dd>
+                        <dd th:if="${#bools.isTrue(session.loginuser.user == 1)}">
+                            <a th:href="@{/userManager}" target="mainFrame">用户管理</a>
+                        </dd>
+                    </dl>
+                </li>
+                <!--监控的微博-->
+                <li class="layui-nav-item" th:if="${#bools.isTrue(session.loginuser.blog == 1)}">
+                    <a th:href="@{/blog}" target="mainFrame">监控微博概览</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--宽度占95% 超出部分隐藏-->
+    <div class="layui-body" style="overflow: hidden">
+        <iframe name="mainFrame" scrolling="auto" frameborder="0" style="width:100%;height:100%">
+        </iframe>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+    欢迎您使用微博舆情监测系统！联系QQ:1830484565
+    </div>
+</div>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:inline="javascript">
+    //JavaScript代码区域
+    layui.use(['element','layer'], function () {
+        var element = layui.element;
+        var layer = layui.layer;
+    });
+
+    //最开始界面展示 hotTopic
+    $(document).ready(function(){
+        $("iframe[name='mainFrame']").attr('src','/hot')
+        //提示信息
+        if([[${session.loginuser}]].log!=""){
+            layer.msg([[${session.loginuser}]].log)
+        }
+        //信息展示之后 log置空
+        $.ajax({
+            type: "GET",
+            url: "/main/cleanlog",
+            data: {mail:[[${session.loginuser}]].mail},
+            dataType: "json",
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            success: function (val) {
+            }
+        });
+    })
+</script>
+</body>
+</html>

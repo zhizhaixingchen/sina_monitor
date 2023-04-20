@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>微鱼舆情监测系统</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+</head>
+<style>
+    #main {
+        margin: 20px 20% 80px 20%;
+        border: 1px solid #E9E7E7;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    #scanlike{
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 10px;
+        box-shadow: 2px 2px #eee;
+    }
+
+    #scanlike > a {
+        font-size: 14px;
+        margin-top: 8px;
+        margin-left: 10px;
+        color: #666;
+        display: block;
+    }
+
+    #scanlike > a:last-child {
+        margin-bottom: 10px;
+    }
+
+    /*两个内容div*/
+    #m_advice,#h_advice{
+        border: 1px solid #ccc;
+        box-shadow: 2px 2px #eee;
+        margin-top: 20px;
+    }
+
+    /*内容div中文字*/
+    #m_advice>a,#h_advice>a{
+        list-style: none;
+        padding-left:14px;
+        padding-top: 14px;
+        font-size: 14px;
+        color: #666;
+        display: block;
+    }
+    #m_advice>a:last-child,#h_advice>a:last-child{
+        margin-bottom: 14px;
+    }
+    /*内容div标题*/
+    #advice > p {
+        margin-left: 17%;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+</style>
+<body>
+    <div id="main">
+        <div id="logo" class="layui-row">
+            <img th:src="@{/img/scanlogo.png}" style="width:150px; height:auto" class="layui-col-md-offset4 layui-col-md4">
+        </div>
+        <div id="scan">
+            <!--搜索框+搜索按钮-->
+            <div id="scanmain" class="layui-row" style="margin-top: 50px">
+                <div class="layui-col-md-offset2 layui-col-md6">
+                    <input id="scanKeyword" class="layui-input" type="text" name="scanText" th:placeholder="请输入标题">
+                </div>
+                <div class="layui-col-md2">
+                    <button id="submitBtn" type="button" class="layui-btn layui-btn">搜索话题</button>
+                </div>
+            </div>
+            <!--搜索联想    从已经搜索过的内容中进行联想  存储在ES中-->
+            <div class="layui-row">
+                <div id="scanlike" hidden class="layui-col-md-offset2 layui-col-md6">
+                </div>
+            </div>
+        </div>
+        <div id="advice">
+            <!--搜索历史-->
+            <p>搜索历史话题</p>
+            <div class="layui-row">
+                <div id="m_advice" class="layui-col-md-offset2 layui-col-md6">
+                    <a href="javascript:void(0)" th:if="${#bools.isTrue(historyScan==null)}">暂无历史信息</a>
+                    <a th:href="@{/topic/scan(keyword=${topicScanStr})}" th:text="${topicScanStr}" th:each="topicScanStr:${historyScan}"></a>
+                </div>
+            </div>
+
+            <!--近期监控项目-->
+            <p>近期监控话题</p>
+            <div class="layui-row">
+                <div id="h_advice" class="layui-col-md-offset2 layui-col-md6">
+                    <a href="javascript:void(0)" th:if="${#bools.isTrue(historyMonitor.size()==0)}">暂无历史信息</a>
+                    <a th:href="@{/topic/scan(keyword=${topicMonStr})}" th:text="${topicMonStr}" th:each="topicMonStr,iterStat:${historyMonitor}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.use(['element','form'],function(){
+        var elem = layui.element;
+        var form = layui.form;
+    })
+</script>
+<script>
+    $(document).ready(function(){
+            $("#scanKeyword").bind('input propertychange change', function() {
+                let content = $(this).val()
+                content = content.trim()
+                if(content.length>0) {
+                    //在es中空格使用逗号存储
+                    content.replaceAll(" ", ",")
+                    //内容变化触发ajax
+                    $.ajax({
+                        type: "GET",
+                        url: "/topicscan/scanImage",
+                        data: {keyword: content},
+                        dataType: "json",
+                        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                        success: function (val) {
+                            showImagine(val);
+                        }
+                    });
+                }else{
+                    console.log("隐藏")
+                    $("#scanlike").children().remove();
+                    $("#scanlike").attr("hidden",true)
+                }
+            })
+
+        //
+        $("#submitBtn").click(function(){
+            let content = $("#scanKeyword").val()
+            if(content.length != 0){
+                window.location.href = "/topic/scan?keyword="+content;
+            }
+        })
+    })
+
+    function showImagine(strList){
+        let a_str = "";
+        //先删除之前的元素
+        $("#scanlike").children().remove();
+        for(var index in strList){
+            strList[index].replaceAll(","," ")
+            str1 = strList[index]
+            //在这里我们我们需要进行正则化
+            keyword=getReg(str1)
+            console.log("keyword = "+keyword)
+            a_str += "<a href=/topic/scan?keyword="+keyword+">"+strList[index]+"</a>"
+        }
+        $("#scanlike").append(a_str)
+        $("#scanlike").removeAttr("hidden")
+
+    }
+
+    function getReg(strRaw){
+        //<em style='color:red;font-style:normal'>苏</em><em style='color:red;font-style:normal'>伊</em><em style='color:red;font-style:normal'>士</em>运河搁浅货轮船头破损灌水
+        //获取em中内容
+        let keyword = ""
+        let first_list = [...strRaw.matchAll("^(.*?)<em")]
+        keyword += first_list[0][1]
+        let em_list = [...strRaw.matchAll("<em.*?>(.*?)</em>")]
+        for(var i in em_list){
+            keyword += em_list[i][1]
+        }
+        let final_list =  [...strRaw.matchAll(".*</em>(.*?)$")]
+        keyword += final_list[0][1]
+        return keyword
+    }
+</script>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>微鱼舆情监测系统</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/echarts.min.js}"></script>
+</head>
+<style>
+    #monitorControl {
+        margin-top: 20px;
+    }
+    #monitorTitle {
+        font-size: 20px;
+        font-weight: 600;
+        padding-top: 6px;
+    }
+</style>
+<body>
+<div>
+    <!--监控区域-->
+    <div id="monitorControl" class="layui-form">
+        <div class="layui-form-item layui-row">
+            <div id="monitorTitle" class="layui-col-md-offset2 layui-col-md2">
+                <p>话题监控总览</p>
+            </div>
+            <div class="layui-inline layui-col-md3 layui-col-md-offset1">
+                <label class="layui-form-label">更新时间阀</label>
+                <!--
+                    $('#testSelect option:selected').text();//选中的文本
+                    $('#testSelect option:selected') .val();//选中的值
+                -->
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="chooseDate" placeholder=" - ">
+                </div>
+            </div>
+
+            <div class="layui-inline layui-col-md3">
+                <label class="layui-form-label">话题搜索</label>
+                <div class="layui-input-inline">
+                    <input id = "scanInput" type="text" class="layui-input" placeholder="请输入要搜索的话题">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--统计表-->
+    <div id="maintable">
+        <!--用于刷新table-->
+        <table id="monitorTable" lay-filter="test"></table>
+    </div>
+</div>
+</body>
+<!--layui script-->
+<script th:src="@{/layui/layui.js}"></script>
+<!--为表格添加自增序号列-->
+<script type="text/html" id="zizeng">
+    {{d.LAY_TABLE_INDEX+1}}
+</script>
+<!--监控非监控状态-->
+<script type="text/html" id="switchMonitor">
+    <input type="checkbox" id="isMonitor" prop="{{d.topicName}}" value="{{d.monitor}}" lay-skin="switch" lay-text="监控|非监控" lay-filter="monitorFilter" {{ d.monitor ? 'checked' : ''}}>
+</script>
+<script>
+    var tableIns = null;
+    layui.use(['table','layer','form','laydate'], function(){
+        var table = layui.table;
+        var form = layui.form;
+        //对表格实现延迟加载 思路
+        //hot/summary请求数据   存储json至session
+        //hot/fresh 获取存储的数据
+        <!--主要内容-->
+        <!--        序号      话题      关注度     情感倾向    标签  -->
+        tableIns = table.render({
+            elem: '#monitorTable'
+            ,url: 'topic/monitorFresh'
+            ,page:true
+            ,limit:10
+            ,even:true
+            ,cellMinWidth:20
+            ,cols: [
+                [
+                    {field: 'zizeng', title: '序号',align:"center",type:"numbers"}
+                    ,{field: 'topicName', title: '话题',align:"center",templet:function (d) {
+                        //由于topicscan中topicName为主键 ES不能包含空格 因此我们之前在装载加入数据库时,将空格改为逗号,现在我们需要改回来,才能完成跳转
+                        var huati = d.topicName
+                        huati = huati.replace(","," ")
+                        //如果标签中存在<em，则说明该数据来自搜索，我们需要进行正则化
+                        let str2 = huati
+                        if(huati.indexOf("<em") != -1){
+                            str2 = getReg(huati)
+                        }
+                        return "<a href = \"/topic/scan?keyword="+str2+" \">"+huati+"</a>";
+                    }}
+                    ,{field: 'current_date', title: '更新时间',sort:"sorted", align:"center",templet:function(d){
+                        var date = new Date();
+                        date.setTime(d.current_date)
+                        return date.toLocaleDateString()+" "+date.toTimeString().substring(0,8)
+                    }}
+                    ,{field: 'monitor', title: '当前话题状态',sort:true,align:"center",templet:'#switchMonitor'}
+                ]
+            ]
+        });
+
+        form.on('switch(monitorFilter)',function(obj){
+            var monitor = obj.elem.value
+            console.log(obj)
+            if(monitor == "false"){
+                monitor = true
+            }else{
+              monitor = false
+            }
+            var content = obj.elem.attributes["prop"].value
+            //将逗号转换为空格
+            content = content.replace(","," ")
+            console.log("monitor = "+monitor)
+            console.log(content)
+            //更新监控数据
+            $.ajax({
+                type: "GET",
+                url: "/topic/monitorUpdate",
+                data: {keyword:content,isMonitor:monitor},
+                dataType: "json",
+                contentType:"application/x-www-form-urlencoded; charset=utf-8",
+                success: function(){
+
+                    //重新加载table
+                    tableIns.reload({
+                        url:'topic/monitorFresh'
+                    })
+                }
+            });
+        })
+
+        //日期范围
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#chooseDate'
+            ,range: true
+            ,done:function(value, date, endDate){
+                beginStr = date["year"]+"-"+date["month"]+"-"+date["date"]
+                endStr = endDate["year"]+"-"+endDate["month"]+"-"+endDate["date"]
+                $.ajax({
+                    type: "GET",
+                    url: "/topic/monitor/queryByTimeRange",
+                    data: {begin:beginStr,end:endStr},
+                    dataType: "json",
+                    contentType:"application/x-www-form-urlencoded; charset=utf-8",
+                    success: function(){
+                        //重新加载table
+                        tableIns.reload({
+                            url:'topic/monitorFresh'
+                        })
+                    }
+                });
+            }
+        });
+    });
+
+    //属于正则表达式
+    function getReg(strRaw){
+        //<em style='color:red;font-style:normal'>苏</em><em style='color:red;font-style:normal'>伊</em><em style='color:red;font-style:normal'>士</em>运河搁浅货轮船头破损灌水
+        //获取em中内容
+        let keyword = ""
+        let first_list = [...strRaw.matchAll("^(.*?)<em")]
+        keyword += first_list[0][1]
+        let em_list = [...strRaw.matchAll("<em.*?>(.*?)</em>")]
+        for(var i in em_list){
+            keyword += em_list[i][1]
+        }
+        let final_list =  [...strRaw.matchAll(".*</em>(.*?)$")]
+        keyword += final_list[0][1]
+        return keyword
+    }
+</script>
+<script>
+    $(document).ready(function(){
+        //绑定事件
+        $("#scanInput").bind('input change',function(){
+            let content = $(this).val()
+            content = content.trim();
+            //空格转逗号
+            content = content.replace(" ",",");
+            $.ajax({
+                type: "GET",
+                url: "/topic/monitor/topicSearch",
+                data: {keyword: content},
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function () {
+                    //重新加载table
+                    tableIns.reload({
+                        url:'topic/monitorFresh'
+                    })
+                }
+            });
+
+        })
+    })
+
+</script>
+</html>

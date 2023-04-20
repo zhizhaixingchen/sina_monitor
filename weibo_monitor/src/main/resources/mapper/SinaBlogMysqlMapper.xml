@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sina.dao.mapper.SinaBlogMySqlMapper">
+    <!--获取所有数据-->
+    <select id="queryAll" resultType="com.sina.pojo.BlogMysql">
+        SELECT *
+        FROM sina_blog
+        ORDER BY starttime desc
+        LIMIT #{from},#{size}
+    </select>
+
+<!--根据mid查询数据    -->
+    <select id="queryByMid" resultType="com.sina.pojo.BlogMysql">
+        SELECT *
+        FROM sina_blog
+        WHERE mid = #{mid}
+    </select>
+    <!--根据名字获取数据-->
+    <select id="queryByUser" resultType="com.sina.pojo.BlogMysql">
+        SELECT *
+        FROM sina_blog
+        WHERE name = #{name}
+        ORDER BY starttime desc
+        LIMIT #{from},#{size}
+    </select>
+
+<!--修改监控时间-->
+    <update id="modifyTime">
+        UPDATE sina_blog
+        SET time = #{time}
+        WHERE mid = #{mid}
+    </update>
+
+<!--追加微博-->
+    <insert id="addBlog">
+        REPLACE INTO sina_blog(`mid`,`uid`,`name`,`time`,`starttime`,`emotion`,`ismon`)
+        VALUES(#{mid},#{uid},#{name},#{time},#{starttime},#{emotion},#{ismon})
+    </insert>
+
+    <!--删除微博-->
+    <delete id="deleteBlog">
+        DELETE FROM sina_blog
+        WHERE
+            mid = #{mid}
+    </delete>
+
+    <update id="changeMonState">
+        UPDATE sina_blog
+        SET ismon = #{ismon}
+        WHERE mid = #{mid}
+    </update>
+
+    <select id="queryByMonitor" resultType="com.sina.pojo.BlogMysql">
+        SELECT *
+        FROM sina_blog
+        WHERE ismon = 0
+        LIMIT #{from},#{size}
+    </select>
+
+
+    <select id="queryByTime" resultType="com.sina.pojo.BlogMysql">
+        SELECT *
+        FROM sina_blog
+        WHERE starttime BETWEEN #{start} and #{end}
+        ORDER BY starttime ASC
+        LIMIT #{from},#{size}
+    </select>
+
+    <select id="queryByEmotion" resultType="com.sina.pojo.BlogMysql">
+        SELECT *
+        FROM sina_blog
+        ORDER BY emotion ${rotation}
+        LIMIT #{from},#{size}
+    </select>
+</mapper>
