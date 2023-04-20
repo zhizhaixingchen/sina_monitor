@@ -1,0 +1,110 @@
+WARN scheduler_Worker-3 org.ansj.util.MyStaticValue - not find library.properties in classpath use it by default !
+INFO scheduler_Worker-3 org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR scheduler_Worker-3 org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG scheduler_Worker-3 org.ansj.library.DicLibrary - begin init dic !
+INFO scheduler_Worker-3 org.ansj.dic.impl.File2Stream - path to stream library/default.dic
+ERROR scheduler_Worker-3 org.ansj.library.DicLibrary - Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+DEBUG scheduler_Worker-3 org.ansj.library.CrfLibrary - begin init crf model!
+INFO scheduler_Worker-3 org.ansj.app.crf.Model - load crf model ok ! use time :1187
+INFO scheduler_Worker-3 org.ansj.library.CrfLibrary - load crf use time:1189 path is : jar://crf.model
+INFO scheduler_Worker-3 org.ansj.library.DATDictionary - init core library ok use time : 712
+INFO scheduler_Worker-3 org.ansj.library.NgramLibrary - init ngram ok use time :395
+WARN scheduler_Worker-1 org.ansj.util.MyStaticValue - not find library.properties in classpath use it by default !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR scheduler_Worker-1 org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG scheduler_Worker-1 org.ansj.library.DicLibrary - begin init dic !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/default.dic
+ERROR scheduler_Worker-1 org.ansj.library.DicLibrary - Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+DEBUG scheduler_Worker-1 org.ansj.library.CrfLibrary - begin init crf model!
+INFO scheduler_Worker-1 org.ansj.app.crf.Model - load crf model ok ! use time :1149
+INFO scheduler_Worker-1 org.ansj.library.CrfLibrary - load crf use time:1152 path is : jar://crf.model
+INFO scheduler_Worker-1 org.ansj.library.DATDictionary - init core library ok use time : 702
+INFO scheduler_Worker-1 org.ansj.library.NgramLibrary - init ngram ok use time :543
+WARN scheduler_Worker-3 org.ansj.util.MyStaticValue - not find library.properties in classpath use it by default !
+INFO scheduler_Worker-3 org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR scheduler_Worker-3 org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG scheduler_Worker-3 org.ansj.library.DicLibrary - begin init dic !
+INFO scheduler_Worker-3 org.ansj.dic.impl.File2Stream - path to stream library/default.dic
+ERROR scheduler_Worker-3 org.ansj.library.DicLibrary - Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+DEBUG scheduler_Worker-3 org.ansj.library.CrfLibrary - begin init crf model!
+INFO scheduler_Worker-3 org.ansj.app.crf.Model - load crf model ok ! use time :1504
+INFO scheduler_Worker-3 org.ansj.library.CrfLibrary - load crf use time:1506 path is : jar://crf.model
+INFO scheduler_Worker-3 org.ansj.library.DATDictionary - init core library ok use time : 692
+INFO scheduler_Worker-3 org.ansj.library.NgramLibrary - init ngram ok use time :466
+WARN scheduler_Worker-1 org.ansj.util.MyStaticValue - not find library.properties in classpath use it by default !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR scheduler_Worker-1 org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG scheduler_Worker-1 org.ansj.library.DicLibrary - begin init dic !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/default.dic
+ERROR scheduler_Worker-1 org.ansj.library.DicLibrary - Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+DEBUG scheduler_Worker-1 org.ansj.library.CrfLibrary - begin init crf model!
+INFO scheduler_Worker-1 org.ansj.app.crf.Model - load crf model ok ! use time :1386
+INFO scheduler_Worker-1 org.ansj.library.CrfLibrary - load crf use time:1388 path is : jar://crf.model
+INFO scheduler_Worker-1 org.ansj.library.DATDictionary - init core library ok use time : 682
+INFO scheduler_Worker-1 org.ansj.library.NgramLibrary - init ngram ok use time :366
+WARN scheduler_Worker-1 org.ansj.util.MyStaticValue - not find library.properties in classpath use it by default !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR scheduler_Worker-1 org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG scheduler_Worker-1 org.ansj.library.DicLibrary - begin init dic !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/default.dic
+ERROR scheduler_Worker-1 org.ansj.library.DicLibrary - Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+DEBUG scheduler_Worker-1 org.ansj.library.CrfLibrary - begin init crf model!
+INFO scheduler_Worker-1 org.ansj.app.crf.Model - load crf model ok ! use time :1975
+INFO scheduler_Worker-1 org.ansj.library.CrfLibrary - load crf use time:1979 path is : jar://crf.model
+INFO scheduler_Worker-1 org.ansj.library.DATDictionary - init core library ok use time : 696
+INFO scheduler_Worker-1 org.ansj.library.NgramLibrary - init ngram ok use time :412
+WARN scheduler_Worker-1 org.ansj.util.MyStaticValue - not find library.properties in classpath use it by default !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR scheduler_Worker-1 org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG scheduler_Worker-1 org.ansj.library.DicLibrary - begin init dic !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/default.dic
+ERROR scheduler_Worker-1 org.ansj.library.DicLibrary - Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+DEBUG scheduler_Worker-1 org.ansj.library.CrfLibrary - begin init crf model!
+INFO scheduler_Worker-1 org.ansj.app.crf.Model - load crf model ok ! use time :1087
+INFO scheduler_Worker-1 org.ansj.library.CrfLibrary - load crf use time:1090 path is : jar://crf.model
+INFO scheduler_Worker-1 org.ansj.library.DATDictionary - init core library ok use time : 702
+INFO scheduler_Worker-1 org.ansj.library.NgramLibrary - init ngram ok use time :395
+WARN scheduler_Worker-2 org.ansj.util.MyStaticValue - not find library.properties in classpath use it by default !
+INFO scheduler_Worker-2 org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR scheduler_Worker-2 org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG scheduler_Worker-2 org.ansj.library.DicLibrary - begin init dic !
+INFO scheduler_Worker-2 org.ansj.dic.impl.File2Stream - path to stream library/default.dic
+ERROR scheduler_Worker-2 org.ansj.library.DicLibrary - Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+DEBUG scheduler_Worker-2 org.ansj.library.CrfLibrary - begin init crf model!
+INFO scheduler_Worker-2 org.ansj.app.crf.Model - load crf model ok ! use time :1129
+INFO scheduler_Worker-2 org.ansj.library.CrfLibrary - load crf use time:1133 path is : jar://crf.model
+INFO scheduler_Worker-2 org.ansj.library.DATDictionary - init core library ok use time : 721
+INFO scheduler_Worker-2 org.ansj.library.NgramLibrary - init ngram ok use time :359
+WARN scheduler_Worker-1 org.ansj.util.MyStaticValue - not find library.properties in classpath use it by default !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR scheduler_Worker-1 org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG scheduler_Worker-1 org.ansj.library.DicLibrary - begin init dic !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/default.dic
+ERROR scheduler_Worker-1 org.ansj.library.DicLibrary - Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+DEBUG scheduler_Worker-1 org.ansj.library.CrfLibrary - begin init crf model!
+INFO scheduler_Worker-1 org.ansj.app.crf.Model - load crf model ok ! use time :1194
+INFO scheduler_Worker-1 org.ansj.library.CrfLibrary - load crf use time:1196 path is : jar://crf.model
+INFO scheduler_Worker-1 org.ansj.library.DATDictionary - init core library ok use time : 625
+INFO scheduler_Worker-1 org.ansj.library.NgramLibrary - init ngram ok use time :419
+WARN scheduler_Worker-1 org.ansj.util.MyStaticValue - not find library.properties in classpath use it by default !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR scheduler_Worker-1 org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG scheduler_Worker-1 org.ansj.library.DicLibrary - begin init dic !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/default.dic
+ERROR scheduler_Worker-1 org.ansj.library.DicLibrary - Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+DEBUG scheduler_Worker-1 org.ansj.library.CrfLibrary - begin init crf model!
+INFO scheduler_Worker-1 org.ansj.app.crf.Model - load crf model ok ! use time :2016
+INFO scheduler_Worker-1 org.ansj.library.CrfLibrary - load crf use time:2021 path is : jar://crf.model
+INFO scheduler_Worker-1 org.ansj.library.DATDictionary - init core library ok use time : 825
+INFO scheduler_Worker-1 org.ansj.library.NgramLibrary - init ngram ok use time :491
+WARN scheduler_Worker-1 org.ansj.util.MyStaticValue - not find library.properties in classpath use it by default !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/ambiguity.dic
+ERROR scheduler_Worker-1 org.ansj.library.AmbiguityLibrary - Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+DEBUG scheduler_Worker-1 org.ansj.library.DicLibrary - begin init dic !
+INFO scheduler_Worker-1 org.ansj.dic.impl.File2Stream - path to stream library/default.dic
+ERROR scheduler_Worker-1 org.ansj.library.DicLibrary - Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+DEBUG scheduler_Worker-1 org.ansj.library.CrfLibrary - begin init crf model!
+INFO scheduler_Worker-1 org.ansj.app.crf.Model - load crf model ok ! use time :1178
+INFO scheduler_Worker-1 org.ansj.library.CrfLibrary - load crf use time:1180 path is : jar://crf.model
+INFO scheduler_Worker-1 org.ansj.library.DATDictionary - init core library ok use time : 701
+INFO scheduler_Worker-1 org.ansj.library.NgramLibrary - init ngram ok use time :406

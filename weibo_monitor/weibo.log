@@ -1,0 +1,828 @@
+10   INFO  [2021-03-23 19:07:15]  path to stream library/ambiguity.dic
+11   ERROR [2021-03-23 19:07:15]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+12   DEBUG [2021-03-23 19:07:15]  begin init dic !
+12   INFO  [2021-03-23 19:07:15]  path to stream library/default.dic
+12   ERROR [2021-03-23 19:07:15]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+13   DEBUG [2021-03-23 19:07:15]  begin init crf model!
+1138 INFO  [2021-03-23 19:07:16]  load crf model ok ! use time :1122
+1139 INFO  [2021-03-23 19:07:16]  load crf use time:1126 path is : jar://crf.model
+2085 INFO  [2021-03-23 19:07:17]  init core library ok use time : 815
+2606 INFO  [2021-03-23 19:07:18]  init ngram ok use time :518
+0    WARN  [2021-03-23 19:10:14]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-23 19:10:14]  path to stream library/ambiguity.dic
+2    ERROR [2021-03-23 19:10:14]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+3    DEBUG [2021-03-23 19:10:14]  begin init dic !
+3    INFO  [2021-03-23 19:10:14]  path to stream library/default.dic
+4    ERROR [2021-03-23 19:10:14]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-03-23 19:10:14]  begin init crf model!
+1247 INFO  [2021-03-23 19:10:16]  load crf model ok ! use time :1241
+1247 INFO  [2021-03-23 19:10:16]  load crf use time:1243 path is : jar://crf.model
+1994 INFO  [2021-03-23 19:10:16]  init core library ok use time : 658
+2404 INFO  [2021-03-23 19:10:17]  init ngram ok use time :408
+0    WARN  [2021-03-23 19:12:23]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-23 19:12:23]  path to stream library/ambiguity.dic
+2    ERROR [2021-03-23 19:12:23]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+3    DEBUG [2021-03-23 19:12:23]  begin init dic !
+3    INFO  [2021-03-23 19:12:23]  path to stream library/default.dic
+4    ERROR [2021-03-23 19:12:23]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-03-23 19:12:23]  begin init crf model!
+1104 INFO  [2021-03-23 19:12:24]  load crf model ok ! use time :1098
+1104 INFO  [2021-03-23 19:12:24]  load crf use time:1100 path is : jar://crf.model
+1829 INFO  [2021-03-23 19:12:25]  init core library ok use time : 642
+2218 INFO  [2021-03-23 19:12:25]  init ngram ok use time :387
+0    WARN  [2021-03-23 19:24:39]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-23 19:24:39]  path to stream library/ambiguity.dic
+2    ERROR [2021-03-23 19:24:39]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+3    DEBUG [2021-03-23 19:24:39]  begin init dic !
+3    INFO  [2021-03-23 19:24:39]  path to stream library/default.dic
+4    ERROR [2021-03-23 19:24:39]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-03-23 19:24:39]  begin init crf model!
+1120 INFO  [2021-03-23 19:24:40]  load crf model ok ! use time :1114
+1120 INFO  [2021-03-23 19:24:40]  load crf use time:1116 path is : jar://crf.model
+1825 INFO  [2021-03-23 19:24:41]  init core library ok use time : 627
+2206 INFO  [2021-03-23 19:24:42]  init ngram ok use time :379
+0    WARN  [2021-03-23 21:46:28]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-23 21:46:28]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-23 21:46:28]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-03-23 21:46:28]  begin init dic !
+4    INFO  [2021-03-23 21:46:28]  path to stream library/default.dic
+4    ERROR [2021-03-23 21:46:28]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-03-23 21:46:28]  begin init crf model!
+1356 INFO  [2021-03-23 21:46:30]  load crf model ok ! use time :1349
+1356 INFO  [2021-03-23 21:46:30]  load crf use time:1352 path is : jar://crf.model
+2138 INFO  [2021-03-23 21:46:30]  init core library ok use time : 700
+2662 INFO  [2021-03-23 21:46:31]  init ngram ok use time :521
+0    WARN  [2021-03-23 21:49:37]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-23 21:49:37]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-23 21:49:37]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+5    DEBUG [2021-03-23 21:49:37]  begin init dic !
+5    INFO  [2021-03-23 21:49:37]  path to stream library/default.dic
+6    ERROR [2021-03-23 21:49:37]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+7    DEBUG [2021-03-23 21:49:37]  begin init crf model!
+1263 INFO  [2021-03-23 21:49:39]  load crf model ok ! use time :1254
+1263 INFO  [2021-03-23 21:49:39]  load crf use time:1256 path is : jar://crf.model
+1999 INFO  [2021-03-23 21:49:39]  init core library ok use time : 654
+2388 INFO  [2021-03-23 21:49:40]  init ngram ok use time :387
+0    WARN  [2021-03-23 21:59:42]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-23 21:59:42]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-23 21:59:42]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-03-23 21:59:42]  begin init dic !
+4    INFO  [2021-03-23 21:59:42]  path to stream library/default.dic
+4    ERROR [2021-03-23 21:59:42]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-03-23 21:59:42]  begin init crf model!
+1163 INFO  [2021-03-23 21:59:43]  load crf model ok ! use time :1154
+1164 INFO  [2021-03-23 21:59:43]  load crf use time:1159 path is : jar://crf.model
+1842 INFO  [2021-03-23 21:59:44]  init core library ok use time : 600
+2250 INFO  [2021-03-23 21:59:44]  init ngram ok use time :405
+0    WARN  [2021-03-23 22:01:51]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-23 22:01:51]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-23 22:01:51]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-03-23 22:01:51]  begin init dic !
+4    INFO  [2021-03-23 22:01:51]  path to stream library/default.dic
+13   ERROR [2021-03-23 22:01:51]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+14   DEBUG [2021-03-23 22:01:51]  begin init crf model!
+1254 INFO  [2021-03-23 22:01:52]  load crf model ok ! use time :1237
+1254 INFO  [2021-03-23 22:01:52]  load crf use time:1240 path is : jar://crf.model
+2035 INFO  [2021-03-23 22:01:53]  init core library ok use time : 689
+2477 INFO  [2021-03-23 22:01:53]  init ngram ok use time :438
+0    WARN  [2021-03-23 22:04:40]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-23 22:04:40]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-23 22:04:40]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-03-23 22:04:40]  begin init dic !
+4    INFO  [2021-03-23 22:04:40]  path to stream library/default.dic
+4    ERROR [2021-03-23 22:04:40]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-03-23 22:04:40]  begin init crf model!
+1149 INFO  [2021-03-23 22:04:42]  load crf model ok ! use time :1142
+1149 INFO  [2021-03-23 22:04:42]  load crf use time:1145 path is : jar://crf.model
+1901 INFO  [2021-03-23 22:04:42]  init core library ok use time : 673
+2349 INFO  [2021-03-23 22:04:43]  init ngram ok use time :445
+0    WARN  [2021-03-24 08:42:00]  not find library.properties in classpath use it by default !
+9    INFO  [2021-03-24 08:42:00]  path to stream library/ambiguity.dic
+11   ERROR [2021-03-24 08:42:00]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+14   DEBUG [2021-03-24 08:42:00]  begin init dic !
+15   INFO  [2021-03-24 08:42:00]  path to stream library/default.dic
+16   ERROR [2021-03-24 08:42:00]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+18   DEBUG [2021-03-24 08:42:00]  begin init crf model!
+3135 INFO  [2021-03-24 08:42:03]  load crf model ok ! use time :3109
+3137 INFO  [2021-03-24 08:42:03]  load crf use time:3119 path is : jar://crf.model
+5137 INFO  [2021-03-24 08:42:05]  init core library ok use time : 1836
+6631 INFO  [2021-03-24 08:42:06]  init ngram ok use time :1486
+0    WARN  [2021-03-24 08:47:08]  not find library.properties in classpath use it by default !
+4    INFO  [2021-03-24 08:47:08]  path to stream library/ambiguity.dic
+5    ERROR [2021-03-24 08:47:08]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+7    DEBUG [2021-03-24 08:47:08]  begin init dic !
+7    INFO  [2021-03-24 08:47:08]  path to stream library/default.dic
+8    ERROR [2021-03-24 08:47:08]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+9    DEBUG [2021-03-24 08:47:08]  begin init crf model!
+2787 INFO  [2021-03-24 08:47:11]  load crf model ok ! use time :2774
+2788 INFO  [2021-03-24 08:47:11]  load crf use time:2779 path is : jar://crf.model
+4978 INFO  [2021-03-24 08:47:13]  init core library ok use time : 1983
+6540 INFO  [2021-03-24 08:47:15]  init ngram ok use time :1551
+0    WARN  [2021-03-24 08:49:01]  not find library.properties in classpath use it by default !
+6    INFO  [2021-03-24 08:49:01]  path to stream library/ambiguity.dic
+7    ERROR [2021-03-24 08:49:01]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+11   DEBUG [2021-03-24 08:49:01]  begin init dic !
+11   INFO  [2021-03-24 08:49:01]  path to stream library/default.dic
+12   ERROR [2021-03-24 08:49:01]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+13   DEBUG [2021-03-24 08:49:01]  begin init crf model!
+2648 INFO  [2021-03-24 08:49:04]  load crf model ok ! use time :2630
+2648 INFO  [2021-03-24 08:49:04]  load crf use time:2635 path is : jar://crf.model
+4595 INFO  [2021-03-24 08:49:06]  init core library ok use time : 1788
+5489 INFO  [2021-03-24 08:49:07]  init ngram ok use time :890
+0    WARN  [2021-03-24 08:55:18]  not find library.properties in classpath use it by default !
+9    INFO  [2021-03-24 08:55:18]  path to stream library/ambiguity.dic
+10   ERROR [2021-03-24 08:55:18]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+12   DEBUG [2021-03-24 08:55:18]  begin init dic !
+12   INFO  [2021-03-24 08:55:18]  path to stream library/default.dic
+13   ERROR [2021-03-24 08:55:18]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+14   DEBUG [2021-03-24 08:55:18]  begin init crf model!
+3490 INFO  [2021-03-24 08:55:22]  load crf model ok ! use time :3466
+3492 INFO  [2021-03-24 08:55:22]  load crf use time:3478 path is : jar://crf.model
+5824 INFO  [2021-03-24 08:55:24]  init core library ok use time : 2042
+6949 INFO  [2021-03-24 08:55:25]  init ngram ok use time :1118
+0    WARN  [2021-03-24 09:24:07]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-24 09:24:07]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-24 09:24:07]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-03-24 09:24:07]  begin init dic !
+5    INFO  [2021-03-24 09:24:07]  path to stream library/default.dic
+5    ERROR [2021-03-24 09:24:07]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-03-24 09:24:07]  begin init crf model!
+1363 INFO  [2021-03-24 09:24:09]  load crf model ok ! use time :1352
+1364 INFO  [2021-03-24 09:24:09]  load crf use time:1358 path is : jar://crf.model
+2163 INFO  [2021-03-24 09:24:10]  init core library ok use time : 698
+2607 INFO  [2021-03-24 09:24:10]  init ngram ok use time :441
+0    WARN  [2021-03-24 09:27:24]  not find library.properties in classpath use it by default !
+3    INFO  [2021-03-24 09:27:24]  path to stream library/ambiguity.dic
+4    ERROR [2021-03-24 09:27:24]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-03-24 09:27:24]  begin init dic !
+5    INFO  [2021-03-24 09:27:24]  path to stream library/default.dic
+5    ERROR [2021-03-24 09:27:24]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-03-24 09:27:24]  begin init crf model!
+1181 INFO  [2021-03-24 09:27:25]  load crf model ok ! use time :1174
+1182 INFO  [2021-03-24 09:27:25]  load crf use time:1177 path is : jar://crf.model
+1907 INFO  [2021-03-24 09:27:26]  init core library ok use time : 648
+2310 INFO  [2021-03-24 09:27:26]  init ngram ok use time :399
+0    WARN  [2021-03-24 09:31:00]  not find library.properties in classpath use it by default !
+3    INFO  [2021-03-24 09:31:00]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-24 09:31:00]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-03-24 09:31:00]  begin init dic !
+5    INFO  [2021-03-24 09:31:00]  path to stream library/default.dic
+5    ERROR [2021-03-24 09:31:00]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-03-24 09:31:00]  begin init crf model!
+1243 INFO  [2021-03-24 09:31:01]  load crf model ok ! use time :1233
+1243 INFO  [2021-03-24 09:31:01]  load crf use time:1237 path is : jar://crf.model
+2002 INFO  [2021-03-24 09:31:02]  init core library ok use time : 671
+2390 INFO  [2021-03-24 09:31:02]  init ngram ok use time :385
+0    WARN  [2021-03-24 09:39:06]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-24 09:39:06]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-24 09:39:06]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+3    DEBUG [2021-03-24 09:39:06]  begin init dic !
+3    INFO  [2021-03-24 09:39:06]  path to stream library/default.dic
+4    ERROR [2021-03-24 09:39:06]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-03-24 09:39:06]  begin init crf model!
+1114 INFO  [2021-03-24 09:39:07]  load crf model ok ! use time :1108
+1115 INFO  [2021-03-24 09:39:07]  load crf use time:1110 path is : jar://crf.model
+1850 INFO  [2021-03-24 09:39:08]  init core library ok use time : 659
+2184 INFO  [2021-03-24 09:39:08]  init ngram ok use time :330
+0    WARN  [2021-03-24 09:45:33]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-24 09:45:33]  path to stream library/ambiguity.dic
+2    ERROR [2021-03-24 09:45:33]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+3    DEBUG [2021-03-24 09:45:33]  begin init dic !
+3    INFO  [2021-03-24 09:45:33]  path to stream library/default.dic
+4    ERROR [2021-03-24 09:45:33]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-03-24 09:45:33]  begin init crf model!
+1090 INFO  [2021-03-24 09:45:34]  load crf model ok ! use time :1084
+1090 INFO  [2021-03-24 09:45:34]  load crf use time:1086 path is : jar://crf.model
+1890 INFO  [2021-03-24 09:45:35]  init core library ok use time : 721
+2238 INFO  [2021-03-24 09:45:35]  init ngram ok use time :346
+0    WARN  [2021-03-24 11:52:20]  not find library.properties in classpath use it by default !
+4    INFO  [2021-03-24 11:52:20]  path to stream library/ambiguity.dic
+6    ERROR [2021-03-24 11:52:20]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+7    DEBUG [2021-03-24 11:52:20]  begin init dic !
+7    INFO  [2021-03-24 11:52:20]  path to stream library/default.dic
+7    ERROR [2021-03-24 11:52:20]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+8    DEBUG [2021-03-24 11:52:20]  begin init crf model!
+1330 INFO  [2021-03-24 11:52:21]  load crf model ok ! use time :1319
+1330 INFO  [2021-03-24 11:52:21]  load crf use time:1322 path is : jar://crf.model
+2263 INFO  [2021-03-24 11:52:22]  init core library ok use time : 820
+2647 INFO  [2021-03-24 11:52:23]  init ngram ok use time :382
+0    WARN  [2021-03-24 12:34:31]  not find library.properties in classpath use it by default !
+3    INFO  [2021-03-24 12:34:31]  path to stream library/ambiguity.dic
+4    ERROR [2021-03-24 12:34:31]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+5    DEBUG [2021-03-24 12:34:31]  begin init dic !
+5    INFO  [2021-03-24 12:34:31]  path to stream library/default.dic
+5    ERROR [2021-03-24 12:34:31]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-03-24 12:34:31]  begin init crf model!
+1247 INFO  [2021-03-24 12:34:32]  load crf model ok ! use time :1239
+1247 INFO  [2021-03-24 12:34:32]  load crf use time:1241 path is : jar://crf.model
+2024 INFO  [2021-03-24 12:34:33]  init core library ok use time : 695
+2370 INFO  [2021-03-24 12:34:33]  init ngram ok use time :343
+0    WARN  [2021-03-24 13:38:57]  not find library.properties in classpath use it by default !
+40   INFO  [2021-03-24 13:38:57]  path to stream library/ambiguity.dic
+43   ERROR [2021-03-24 13:38:57]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+45   DEBUG [2021-03-24 13:38:57]  begin init dic !
+45   INFO  [2021-03-24 13:38:57]  path to stream library/default.dic
+45   ERROR [2021-03-24 13:38:57]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+46   DEBUG [2021-03-24 13:38:57]  begin init crf model!
+1410 INFO  [2021-03-24 13:38:59]  load crf model ok ! use time :1351
+1410 INFO  [2021-03-24 13:38:59]  load crf use time:1364 path is : jar://crf.model
+2795 INFO  [2021-03-24 13:39:00]  init core library ok use time : 1271
+3172 INFO  [2021-03-24 13:39:00]  init ngram ok use time :371
+0    WARN  [2021-03-24 13:40:49]  not find library.properties in classpath use it by default !
+3    INFO  [2021-03-24 13:40:49]  path to stream library/ambiguity.dic
+4    ERROR [2021-03-24 13:40:49]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+5    DEBUG [2021-03-24 13:40:49]  begin init dic !
+5    INFO  [2021-03-24 13:40:49]  path to stream library/default.dic
+6    ERROR [2021-03-24 13:40:49]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-03-24 13:40:49]  begin init crf model!
+1142 INFO  [2021-03-24 13:40:50]  load crf model ok ! use time :1129
+1142 INFO  [2021-03-24 13:40:50]  load crf use time:1136 path is : jar://crf.model
+2383 INFO  [2021-03-24 13:40:52]  init core library ok use time : 1147
+2735 INFO  [2021-03-24 13:40:52]  init ngram ok use time :348
+0    WARN  [2021-03-24 17:22:37]  not find library.properties in classpath use it by default !
+3    INFO  [2021-03-24 17:22:37]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-24 17:22:37]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-03-24 17:22:37]  begin init dic !
+4    INFO  [2021-03-24 17:22:37]  path to stream library/default.dic
+4    ERROR [2021-03-24 17:22:37]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-03-24 17:22:37]  begin init crf model!
+1307 INFO  [2021-03-24 17:22:38]  load crf model ok ! use time :1300
+1307 INFO  [2021-03-24 17:22:38]  load crf use time:1302 path is : jar://crf.model
+2125 INFO  [2021-03-24 17:22:39]  init core library ok use time : 734
+2633 INFO  [2021-03-24 17:22:39]  init ngram ok use time :505
+0    WARN  [2021-03-24 17:26:58]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-24 17:26:58]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-24 17:26:58]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+5    DEBUG [2021-03-24 17:26:58]  begin init dic !
+5    INFO  [2021-03-24 17:26:58]  path to stream library/default.dic
+5    ERROR [2021-03-24 17:26:58]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-03-24 17:26:58]  begin init crf model!
+1285 INFO  [2021-03-24 17:27:00]  load crf model ok ! use time :1276
+1285 INFO  [2021-03-24 17:27:00]  load crf use time:1279 path is : jar://crf.model
+2055 INFO  [2021-03-24 17:27:01]  init core library ok use time : 685
+2485 INFO  [2021-03-24 17:27:01]  init ngram ok use time :427
+0    WARN  [2021-03-24 17:29:53]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-24 17:29:53]  path to stream library/ambiguity.dic
+2    ERROR [2021-03-24 17:29:53]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+3    DEBUG [2021-03-24 17:29:53]  begin init dic !
+3    INFO  [2021-03-24 17:29:53]  path to stream library/default.dic
+3    ERROR [2021-03-24 17:29:53]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-03-24 17:29:53]  begin init crf model!
+1172 INFO  [2021-03-24 17:29:54]  load crf model ok ! use time :1165
+1172 INFO  [2021-03-24 17:29:54]  load crf use time:1168 path is : jar://crf.model
+1876 INFO  [2021-03-24 17:29:55]  init core library ok use time : 626
+2261 INFO  [2021-03-24 17:29:55]  init ngram ok use time :383
+0    WARN  [2021-03-24 18:00:41]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-24 18:00:41]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-24 18:00:41]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-03-24 18:00:41]  begin init dic !
+4    INFO  [2021-03-24 18:00:41]  path to stream library/default.dic
+4    ERROR [2021-03-24 18:00:41]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-03-24 18:00:41]  begin init crf model!
+1183 INFO  [2021-03-24 18:00:42]  load crf model ok ! use time :1176
+1183 INFO  [2021-03-24 18:00:42]  load crf use time:1178 path is : jar://crf.model
+1907 INFO  [2021-03-24 18:00:43]  init core library ok use time : 635
+2301 INFO  [2021-03-24 18:00:43]  init ngram ok use time :392
+0    WARN  [2021-03-25 08:45:26]  not find library.properties in classpath use it by default !
+29   INFO  [2021-03-25 08:45:26]  path to stream library/ambiguity.dic
+36   ERROR [2021-03-25 08:45:26]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+37   DEBUG [2021-03-25 08:45:26]  begin init dic !
+37   INFO  [2021-03-25 08:45:26]  path to stream library/default.dic
+37   ERROR [2021-03-25 08:45:26]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+38   DEBUG [2021-03-25 08:45:26]  begin init crf model!
+1277 INFO  [2021-03-25 08:45:27]  load crf model ok ! use time :1230
+1277 INFO  [2021-03-25 08:45:27]  load crf use time:1239 path is : jar://crf.model
+2093 INFO  [2021-03-25 08:45:28]  init core library ok use time : 726
+2488 INFO  [2021-03-25 08:45:28]  init ngram ok use time :390
+0    WARN  [2021-03-31 20:15:59]  not find library.properties in classpath use it by default !
+19   INFO  [2021-03-31 20:15:59]  path to stream library/ambiguity.dic
+31   ERROR [2021-03-31 20:15:59]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+32   DEBUG [2021-03-31 20:15:59]  begin init dic !
+32   INFO  [2021-03-31 20:15:59]  path to stream library/default.dic
+32   ERROR [2021-03-31 20:15:59]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+33   DEBUG [2021-03-31 20:15:59]  begin init crf model!
+1168 INFO  [2021-03-31 20:16:00]  load crf model ok ! use time :1130
+1168 INFO  [2021-03-31 20:16:00]  load crf use time:1135 path is : jar://crf.model
+2294 INFO  [2021-03-31 20:16:01]  init core library ok use time : 1040
+2638 INFO  [2021-03-31 20:16:01]  init ngram ok use time :342
+0    WARN  [2021-03-31 20:32:30]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-31 20:32:30]  path to stream library/ambiguity.dic
+2    ERROR [2021-03-31 20:32:30]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+2    INFO  [2021-03-31 20:32:30]  path to stream library/ambiguity.dic
+5    DEBUG [2021-03-31 20:32:30]  begin init dic !
+5    ERROR [2021-03-31 20:32:30]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+5    INFO  [2021-03-31 20:32:30]  path to stream library/default.dic
+5    ERROR [2021-03-31 20:32:30]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-03-31 20:32:30]  begin init crf model!
+1147 INFO  [2021-03-31 20:32:31]  load crf model ok ! use time :1138
+1148 INFO  [2021-03-31 20:32:31]  load crf use time:1142 path is : jar://crf.model
+2412 INFO  [2021-03-31 20:32:32]  init core library ok use time : 1180
+2878 INFO  [2021-03-31 20:32:33]  init ngram ok use time :463
+0    WARN  [2021-03-31 20:45:15]  not find library.properties in classpath use it by default !
+3    INFO  [2021-03-31 20:45:15]  path to stream library/ambiguity.dic
+5    ERROR [2021-03-31 20:45:15]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+6    DEBUG [2021-03-31 20:45:15]  begin init dic !
+6    INFO  [2021-03-31 20:45:15]  path to stream library/default.dic
+6    ERROR [2021-03-31 20:45:15]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+7    DEBUG [2021-03-31 20:45:15]  begin init crf model!
+1269 INFO  [2021-03-31 20:45:17]  load crf model ok ! use time :1260
+1269 INFO  [2021-03-31 20:45:17]  load crf use time:1262 path is : jar://crf.model
+1956 INFO  [2021-03-31 20:45:17]  init core library ok use time : 603
+2294 INFO  [2021-03-31 20:45:18]  init ngram ok use time :335
+0    WARN  [2021-03-31 20:50:06]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-31 20:50:06]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-31 20:50:06]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+5    DEBUG [2021-03-31 20:50:06]  begin init dic !
+5    INFO  [2021-03-31 20:50:06]  path to stream library/default.dic
+5    ERROR [2021-03-31 20:50:06]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-03-31 20:50:06]  begin init crf model!
+1088 INFO  [2021-03-31 20:50:07]  load crf model ok ! use time :1080
+1088 INFO  [2021-03-31 20:50:07]  load crf use time:1082 path is : jar://crf.model
+2237 INFO  [2021-03-31 20:50:08]  init core library ok use time : 1061
+2578 INFO  [2021-03-31 20:50:08]  init ngram ok use time :338
+0    WARN  [2021-03-31 21:07:00]  not find library.properties in classpath use it by default !
+2    INFO  [2021-03-31 21:07:00]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-31 21:07:00]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+3    DEBUG [2021-03-31 21:07:00]  begin init dic !
+4    INFO  [2021-03-31 21:07:00]  path to stream library/default.dic
+4    ERROR [2021-03-31 21:07:00]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-03-31 21:07:00]  begin init crf model!
+1158 INFO  [2021-03-31 21:07:01]  load crf model ok ! use time :1151
+1159 INFO  [2021-03-31 21:07:01]  load crf use time:1155 path is : jar://crf.model
+2046 INFO  [2021-03-31 21:07:02]  init core library ok use time : 795
+3051 INFO  [2021-03-31 21:07:03]  init ngram ok use time :1002
+0    WARN  [2021-03-31 21:39:49]  not find library.properties in classpath use it by default !
+3    INFO  [2021-03-31 21:39:49]  path to stream library/ambiguity.dic
+3    ERROR [2021-03-31 21:39:49]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-03-31 21:39:49]  begin init dic !
+4    INFO  [2021-03-31 21:39:49]  path to stream library/default.dic
+4    ERROR [2021-03-31 21:39:49]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-03-31 21:39:49]  begin init crf model!
+1144 INFO  [2021-03-31 21:39:50]  load crf model ok ! use time :1137
+1144 INFO  [2021-03-31 21:39:50]  load crf use time:1139 path is : jar://crf.model
+2195 INFO  [2021-03-31 21:39:51]  init core library ok use time : 969
+2590 INFO  [2021-03-31 21:39:51]  init ngram ok use time :392
+0    WARN  [2021-04-01 08:39:16]  not find library.properties in classpath use it by default !
+8    INFO  [2021-04-01 08:39:16]  path to stream library/ambiguity.dic
+9    ERROR [2021-04-01 08:39:16]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+10   INFO  [2021-04-01 08:39:16]  path to stream library/ambiguity.dic
+12   DEBUG [2021-04-01 08:39:16]  begin init dic !
+12   INFO  [2021-04-01 08:39:16]  path to stream library/default.dic
+12   ERROR [2021-04-01 08:39:16]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+12   ERROR [2021-04-01 08:39:16]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+14   DEBUG [2021-04-01 08:39:16]  begin init crf model!
+1395 INFO  [2021-04-01 08:39:17]  load crf model ok ! use time :1377
+1395 INFO  [2021-04-01 08:39:17]  load crf use time:1381 path is : jar://crf.model
+2178 INFO  [2021-04-01 08:39:18]  init core library ok use time : 678
+2572 INFO  [2021-04-01 08:39:18]  init ngram ok use time :390
+0    WARN  [2021-04-01 09:18:56]  not find library.properties in classpath use it by default !
+2    INFO  [2021-04-01 09:18:56]  path to stream library/ambiguity.dic
+3    ERROR [2021-04-01 09:18:56]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-04-01 09:18:56]  begin init dic !
+4    INFO  [2021-04-01 09:18:56]  path to stream library/default.dic
+4    ERROR [2021-04-01 09:18:56]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-04-01 09:18:56]  begin init crf model!
+1102 INFO  [2021-04-01 09:18:57]  load crf model ok ! use time :1095
+1102 INFO  [2021-04-01 09:18:57]  load crf use time:1098 path is : jar://crf.model
+2247 INFO  [2021-04-01 09:18:58]  init core library ok use time : 1066
+2587 INFO  [2021-04-01 09:18:58]  init ngram ok use time :336
+0    WARN  [2021-04-01 09:26:11]  not find library.properties in classpath use it by default !
+4    INFO  [2021-04-01 09:26:11]  path to stream library/ambiguity.dic
+6    ERROR [2021-04-01 09:26:11]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+8    DEBUG [2021-04-01 09:26:11]  begin init dic !
+8    INFO  [2021-04-01 09:26:11]  path to stream library/default.dic
+8    ERROR [2021-04-01 09:26:11]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+9    DEBUG [2021-04-01 09:26:11]  begin init crf model!
+1445 INFO  [2021-04-01 09:26:12]  load crf model ok ! use time :1433
+1445 INFO  [2021-04-01 09:26:12]  load crf use time:1436 path is : jar://crf.model
+2676 INFO  [2021-04-01 09:26:13]  init core library ok use time : 1103
+3224 INFO  [2021-04-01 09:26:14]  init ngram ok use time :536
+0    WARN  [2021-04-01 09:30:10]  not find library.properties in classpath use it by default !
+3    INFO  [2021-04-01 09:30:10]  path to stream library/ambiguity.dic
+4    ERROR [2021-04-01 09:30:10]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+5    DEBUG [2021-04-01 09:30:10]  begin init dic !
+5    INFO  [2021-04-01 09:30:10]  path to stream library/default.dic
+6    ERROR [2021-04-01 09:30:10]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-04-01 09:30:10]  begin init crf model!
+1415 INFO  [2021-04-01 09:30:12]  load crf model ok ! use time :1406
+1415 INFO  [2021-04-01 09:30:12]  load crf use time:1409 path is : jar://crf.model
+2282 INFO  [2021-04-01 09:30:13]  init core library ok use time : 774
+3243 INFO  [2021-04-01 09:30:14]  init ngram ok use time :957
+0    WARN  [2021-04-01 09:31:15]  not find library.properties in classpath use it by default !
+3    INFO  [2021-04-01 09:31:15]  path to stream library/ambiguity.dic
+4    ERROR [2021-04-01 09:31:15]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+5    DEBUG [2021-04-01 09:31:15]  begin init dic !
+5    INFO  [2021-04-01 09:31:15]  path to stream library/default.dic
+5    ERROR [2021-04-01 09:31:15]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-04-01 09:31:15]  begin init crf model!
+1442 INFO  [2021-04-01 09:31:16]  load crf model ok ! use time :1433
+1442 INFO  [2021-04-01 09:31:16]  load crf use time:1436 path is : jar://crf.model
+2441 INFO  [2021-04-01 09:31:17]  init core library ok use time : 901
+3497 INFO  [2021-04-01 09:31:18]  init ngram ok use time :1053
+0    WARN  [2021-04-01 09:31:36]  not find library.properties in classpath use it by default !
+4    INFO  [2021-04-01 09:31:36]  path to stream library/ambiguity.dic
+4    ERROR [2021-04-01 09:31:36]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+8    DEBUG [2021-04-01 09:31:36]  begin init dic !
+8    INFO  [2021-04-01 09:31:36]  path to stream library/default.dic
+9    ERROR [2021-04-01 09:31:36]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+11   DEBUG [2021-04-01 09:31:36]  begin init crf model!
+1371 INFO  [2021-04-01 09:31:37]  load crf model ok ! use time :1356
+1372 INFO  [2021-04-01 09:31:37]  load crf use time:1361 path is : jar://crf.model
+2209 INFO  [2021-04-01 09:31:38]  init core library ok use time : 728
+3087 INFO  [2021-04-01 09:31:39]  init ngram ok use time :876
+0    WARN  [2021-04-01 09:35:00]  not find library.properties in classpath use it by default !
+4    INFO  [2021-04-01 09:35:00]  path to stream library/ambiguity.dic
+5    ERROR [2021-04-01 09:35:00]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+6    DEBUG [2021-04-01 09:35:00]  begin init dic !
+6    INFO  [2021-04-01 09:35:00]  path to stream library/default.dic
+6    ERROR [2021-04-01 09:35:00]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+7    DEBUG [2021-04-01 09:35:00]  begin init crf model!
+1185 INFO  [2021-04-01 09:35:01]  load crf model ok ! use time :1174
+1185 INFO  [2021-04-01 09:35:01]  load crf use time:1178 path is : jar://crf.model
+1978 INFO  [2021-04-01 09:35:01]  init core library ok use time : 708
+2366 INFO  [2021-04-01 09:35:02]  init ngram ok use time :383
+0    WARN  [2021-04-01 12:37:00]  not find library.properties in classpath use it by default !
+4    INFO  [2021-04-01 12:37:00]  path to stream library/ambiguity.dic
+4    ERROR [2021-04-01 12:37:00]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+5    DEBUG [2021-04-01 12:37:00]  begin init dic !
+5    INFO  [2021-04-01 12:37:00]  path to stream library/default.dic
+5    ERROR [2021-04-01 12:37:00]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-04-01 12:37:00]  begin init crf model!
+1096 INFO  [2021-04-01 12:37:01]  load crf model ok ! use time :1088
+1097 INFO  [2021-04-01 12:37:01]  load crf use time:1091 path is : jar://crf.model
+1856 INFO  [2021-04-01 12:37:01]  init core library ok use time : 683
+2242 INFO  [2021-04-01 12:37:02]  init ngram ok use time :383
+0    WARN  [2021-04-01 18:22:48]  not find library.properties in classpath use it by default !
+33   INFO  [2021-04-01 18:22:48]  path to stream library/ambiguity.dic
+45   ERROR [2021-04-01 18:22:48]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+46   DEBUG [2021-04-01 18:22:48]  begin init dic !
+47   INFO  [2021-04-01 18:22:48]  path to stream library/default.dic
+47   ERROR [2021-04-01 18:22:48]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+48   DEBUG [2021-04-01 18:22:48]  begin init crf model!
+1301 INFO  [2021-04-01 18:22:50]  load crf model ok ! use time :1247
+1301 INFO  [2021-04-01 18:22:50]  load crf use time:1253 path is : jar://crf.model
+3205 INFO  [2021-04-01 18:22:52]  init core library ok use time : 1791
+3724 INFO  [2021-04-01 18:22:52]  init ngram ok use time :516
+0    WARN  [2021-04-01 22:05:01]  not find library.properties in classpath use it by default !
+2    INFO  [2021-04-01 22:05:01]  path to stream library/ambiguity.dic
+3    ERROR [2021-04-01 22:05:01]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-04-01 22:05:01]  begin init dic !
+4    INFO  [2021-04-01 22:05:01]  path to stream library/default.dic
+4    ERROR [2021-04-01 22:05:01]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-04-01 22:05:01]  begin init crf model!
+2236 INFO  [2021-04-01 22:05:04]  load crf model ok ! use time :2123
+2236 INFO  [2021-04-01 22:05:04]  load crf use time:2231 path is : jar://crf.model
+3161 INFO  [2021-04-01 22:05:05]  init core library ok use time : 817
+4282 INFO  [2021-04-01 22:05:06]  init ngram ok use time :1117
+0    WARN  [2021-04-02 08:34:03]  not find library.properties in classpath use it by default !
+21   INFO  [2021-04-02 08:34:03]  path to stream library/ambiguity.dic
+33   ERROR [2021-04-02 08:34:03]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+34   DEBUG [2021-04-02 08:34:03]  begin init dic !
+34   INFO  [2021-04-02 08:34:03]  path to stream library/default.dic
+35   ERROR [2021-04-02 08:34:03]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+35   DEBUG [2021-04-02 08:34:03]  begin init crf model!
+1177 INFO  [2021-04-02 08:34:04]  load crf model ok ! use time :1136
+1177 INFO  [2021-04-02 08:34:04]  load crf use time:1142 path is : jar://crf.model
+1930 INFO  [2021-04-02 08:34:05]  init core library ok use time : 651
+2311 INFO  [2021-04-02 08:34:05]  init ngram ok use time :378
+0    WARN  [2021-04-02 08:36:00]  not find library.properties in classpath use it by default !
+2    INFO  [2021-04-02 08:36:00]  path to stream library/ambiguity.dic
+2    ERROR [2021-04-02 08:36:00]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+3    DEBUG [2021-04-02 08:36:00]  begin init dic !
+3    INFO  [2021-04-02 08:36:00]  path to stream library/default.dic
+3    ERROR [2021-04-02 08:36:00]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-04-02 08:36:00]  begin init crf model!
+1182 INFO  [2021-04-02 08:36:02]  load crf model ok ! use time :1175
+1182 INFO  [2021-04-02 08:36:02]  load crf use time:1178 path is : jar://crf.model
+1850 INFO  [2021-04-02 08:36:02]  init core library ok use time : 587
+2193 INFO  [2021-04-02 08:36:03]  init ngram ok use time :340
+0    WARN  [2021-04-02 15:21:14]  not find library.properties in classpath use it by default !
+21   INFO  [2021-04-02 15:21:14]  path to stream library/ambiguity.dic
+25   ERROR [2021-04-02 15:21:14]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+27   DEBUG [2021-04-02 15:21:14]  begin init dic !
+27   INFO  [2021-04-02 15:21:14]  path to stream library/default.dic
+27   ERROR [2021-04-02 15:21:14]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+27   DEBUG [2021-04-02 15:21:14]  begin init crf model!
+1163 INFO  [2021-04-02 15:21:15]  load crf model ok ! use time :1124
+1163 INFO  [2021-04-02 15:21:15]  load crf use time:1136 path is : jar://crf.model
+1884 INFO  [2021-04-02 15:21:16]  init core library ok use time : 623
+2257 INFO  [2021-04-02 15:21:16]  init ngram ok use time :370
+0    WARN  [2021-04-03 09:34:47]  not find library.properties in classpath use it by default !
+6    INFO  [2021-04-03 09:34:47]  path to stream library/ambiguity.dic
+8    ERROR [2021-04-03 09:34:47]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+9    DEBUG [2021-04-03 09:34:47]  begin init dic !
+9    INFO  [2021-04-03 09:34:47]  path to stream library/default.dic
+9    ERROR [2021-04-03 09:34:47]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+27   DEBUG [2021-04-03 09:34:47]  begin init crf model!
+1124 INFO  [2021-04-03 09:34:48]  load crf model ok ! use time :1091
+1125 INFO  [2021-04-03 09:34:48]  load crf use time:1098 path is : jar://crf.model
+2424 INFO  [2021-04-03 09:34:49]  init core library ok use time : 1205
+2810 INFO  [2021-04-03 09:34:50]  init ngram ok use time :382
+0    WARN  [2021-04-03 10:12:53]  not find library.properties in classpath use it by default !
+4    INFO  [2021-04-03 10:12:53]  path to stream library/ambiguity.dic
+5    ERROR [2021-04-03 10:12:53]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+6    DEBUG [2021-04-03 10:12:53]  begin init dic !
+6    INFO  [2021-04-03 10:12:53]  path to stream library/default.dic
+6    ERROR [2021-04-03 10:12:53]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-04-03 10:12:53]  begin init crf model!
+1187 INFO  [2021-04-03 10:12:55]  load crf model ok ! use time :1179
+1187 INFO  [2021-04-03 10:12:55]  load crf use time:1181 path is : jar://crf.model
+1899 INFO  [2021-04-03 10:12:55]  init core library ok use time : 632
+2236 INFO  [2021-04-03 10:12:56]  init ngram ok use time :334
+0    WARN  [2021-04-03 10:27:43]  not find library.properties in classpath use it by default !
+2    INFO  [2021-04-03 10:27:43]  path to stream library/ambiguity.dic
+3    ERROR [2021-04-03 10:27:43]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+3    DEBUG [2021-04-03 10:27:43]  begin init dic !
+4    INFO  [2021-04-03 10:27:43]  path to stream library/default.dic
+4    ERROR [2021-04-03 10:27:43]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-04-03 10:27:43]  begin init crf model!
+1169 INFO  [2021-04-03 10:27:44]  load crf model ok ! use time :1162
+1169 INFO  [2021-04-03 10:27:44]  load crf use time:1165 path is : jar://crf.model
+1810 INFO  [2021-04-03 10:27:45]  init core library ok use time : 563
+2217 INFO  [2021-04-03 10:27:45]  init ngram ok use time :404
+0    WARN  [2021-04-03 17:47:19]  not find library.properties in classpath use it by default !
+47   INFO  [2021-04-03 17:47:19]  path to stream library/ambiguity.dic
+51   ERROR [2021-04-03 17:47:19]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+52   DEBUG [2021-04-03 17:47:19]  begin init dic !
+52   INFO  [2021-04-03 17:47:19]  path to stream library/default.dic
+53   ERROR [2021-04-03 17:47:19]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+54   DEBUG [2021-04-03 17:47:19]  begin init crf model!
+1335 INFO  [2021-04-03 17:47:20]  load crf model ok ! use time :1271
+1336 INFO  [2021-04-03 17:47:20]  load crf use time:1282 path is : jar://crf.model
+2116 INFO  [2021-04-03 17:47:21]  init core library ok use time : 675
+2435 INFO  [2021-04-03 17:47:21]  init ngram ok use time :317
+0    WARN  [2021-04-03 19:21:58]  not find library.properties in classpath use it by default !
+6    INFO  [2021-04-03 19:21:58]  path to stream library/ambiguity.dic
+8    ERROR [2021-04-03 19:21:58]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+10   DEBUG [2021-04-03 19:21:58]  begin init dic !
+11   INFO  [2021-04-03 19:21:58]  path to stream library/default.dic
+11   ERROR [2021-04-03 19:21:58]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+13   DEBUG [2021-04-03 19:21:58]  begin init crf model!
+3895 INFO  [2021-04-03 19:22:02]  load crf model ok ! use time :3875
+3895 INFO  [2021-04-03 19:22:02]  load crf use time:3882 path is : jar://crf.model
+6505 INFO  [2021-04-03 19:22:04]  init core library ok use time : 2296
+8754 INFO  [2021-04-03 19:22:06]  init ngram ok use time :2242
+0    WARN  [2021-04-05 10:08:53]  not find library.properties in classpath use it by default !
+7    INFO  [2021-04-05 10:08:53]  path to stream library/ambiguity.dic
+8    ERROR [2021-04-05 10:08:53]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+9    DEBUG [2021-04-05 10:08:53]  begin init dic !
+9    INFO  [2021-04-05 10:08:53]  path to stream library/default.dic
+9    ERROR [2021-04-05 10:08:53]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+11   DEBUG [2021-04-05 10:08:53]  begin init crf model!
+1340 INFO  [2021-04-05 10:08:54]  load crf model ok ! use time :1323
+1340 INFO  [2021-04-05 10:08:54]  load crf use time:1329 path is : jar://crf.model
+2613 INFO  [2021-04-05 10:08:55]  init core library ok use time : 1162
+2959 INFO  [2021-04-05 10:08:56]  init ngram ok use time :343
+0    WARN  [2021-04-05 15:05:29]  not find library.properties in classpath use it by default !
+22   INFO  [2021-04-05 15:05:29]  path to stream library/ambiguity.dic
+27   ERROR [2021-04-05 15:05:29]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+28   DEBUG [2021-04-05 15:05:29]  begin init dic !
+28   INFO  [2021-04-05 15:05:29]  path to stream library/default.dic
+28   ERROR [2021-04-05 15:05:29]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+29   DEBUG [2021-04-05 15:05:29]  begin init crf model!
+1191 INFO  [2021-04-05 15:05:30]  load crf model ok ! use time :1151
+1191 INFO  [2021-04-05 15:05:30]  load crf use time:1162 path is : jar://crf.model
+1919 INFO  [2021-04-05 15:05:31]  init core library ok use time : 613
+2257 INFO  [2021-04-05 15:05:32]  init ngram ok use time :335
+0    WARN  [2021-04-05 21:48:03]  not find library.properties in classpath use it by default !
+38   INFO  [2021-04-05 21:48:03]  path to stream library/ambiguity.dic
+42   ERROR [2021-04-05 21:48:03]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+44   DEBUG [2021-04-05 21:48:03]  begin init dic !
+44   INFO  [2021-04-05 21:48:03]  path to stream library/default.dic
+44   ERROR [2021-04-05 21:48:03]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+45   DEBUG [2021-04-05 21:48:03]  begin init crf model!
+1411 INFO  [2021-04-05 21:48:04]  load crf model ok ! use time :1356
+1412 INFO  [2021-04-05 21:48:04]  load crf use time:1367 path is : jar://crf.model
+2230 INFO  [2021-04-05 21:48:05]  init core library ok use time : 722
+2592 INFO  [2021-04-05 21:48:06]  init ngram ok use time :360
+0    WARN  [2021-04-07 19:02:31]  not find library.properties in classpath use it by default !
+8    INFO  [2021-04-07 19:02:31]  path to stream library/ambiguity.dic
+9    ERROR [2021-04-07 19:02:31]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+10   DEBUG [2021-04-07 19:02:31]  begin init dic !
+10   INFO  [2021-04-07 19:02:31]  path to stream library/default.dic
+10   ERROR [2021-04-07 19:02:31]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+12   DEBUG [2021-04-07 19:02:31]  begin init crf model!
+1105 INFO  [2021-04-07 19:02:32]  load crf model ok ! use time :1088
+1105 INFO  [2021-04-07 19:02:32]  load crf use time:1093 path is : jar://crf.model
+1809 INFO  [2021-04-07 19:02:33]  init core library ok use time : 596
+2159 INFO  [2021-04-07 19:02:34]  init ngram ok use time :346
+0    WARN  [2021-04-08 09:47:29]  not find library.properties in classpath use it by default !
+7    INFO  [2021-04-08 09:47:29]  path to stream library/ambiguity.dic
+8    ERROR [2021-04-08 09:47:29]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+9    DEBUG [2021-04-08 09:47:29]  begin init dic !
+9    INFO  [2021-04-08 09:47:29]  path to stream library/default.dic
+9    ERROR [2021-04-08 09:47:29]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+10   DEBUG [2021-04-08 09:47:29]  begin init crf model!
+1210 INFO  [2021-04-08 09:47:30]  load crf model ok ! use time :1194
+1210 INFO  [2021-04-08 09:47:30]  load crf use time:1200 path is : jar://crf.model
+2006 INFO  [2021-04-08 09:47:31]  init core library ok use time : 677
+3249 INFO  [2021-04-08 09:47:32]  init ngram ok use time :1240
+0    WARN  [2021-04-08 17:44:41]  not find library.properties in classpath use it by default !
+3    INFO  [2021-04-08 17:44:41]  path to stream library/ambiguity.dic
+3    ERROR [2021-04-08 17:44:41]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-04-08 17:44:41]  begin init dic !
+4    INFO  [2021-04-08 17:44:41]  path to stream library/default.dic
+4    ERROR [2021-04-08 17:44:41]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-04-08 17:44:41]  begin init crf model!
+1130 INFO  [2021-04-08 17:44:43]  load crf model ok ! use time :1108
+1130 INFO  [2021-04-08 17:44:43]  load crf use time:1125 path is : jar://crf.model
+1947 INFO  [2021-04-08 17:44:43]  init core library ok use time : 713
+2365 INFO  [2021-04-08 17:44:44]  init ngram ok use time :414
+0    WARN  [2021-04-08 18:02:05]  not find library.properties in classpath use it by default !
+2    INFO  [2021-04-08 18:02:05]  path to stream library/ambiguity.dic
+3    ERROR [2021-04-08 18:02:05]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+3    DEBUG [2021-04-08 18:02:05]  begin init dic !
+4    INFO  [2021-04-08 18:02:05]  path to stream library/default.dic
+4    ERROR [2021-04-08 18:02:05]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-04-08 18:02:05]  begin init crf model!
+1099 INFO  [2021-04-08 18:02:07]  load crf model ok ! use time :1092
+1099 INFO  [2021-04-08 18:02:07]  load crf use time:1094 path is : jar://crf.model
+1793 INFO  [2021-04-08 18:02:07]  init core library ok use time : 614
+2167 INFO  [2021-04-08 18:02:08]  init ngram ok use time :372
+0    WARN  [2021-04-08 18:03:33]  not find library.properties in classpath use it by default !
+3    INFO  [2021-04-08 18:03:33]  path to stream library/ambiguity.dic
+4    ERROR [2021-04-08 18:03:33]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+5    DEBUG [2021-04-08 18:03:33]  begin init dic !
+5    INFO  [2021-04-08 18:03:33]  path to stream library/default.dic
+5    ERROR [2021-04-08 18:03:33]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-04-08 18:03:33]  begin init crf model!
+1208 INFO  [2021-04-08 18:03:35]  load crf model ok ! use time :1199
+1209 INFO  [2021-04-08 18:03:35]  load crf use time:1203 path is : jar://crf.model
+2059 INFO  [2021-04-08 18:03:35]  init core library ok use time : 753
+2454 INFO  [2021-04-08 18:03:36]  init ngram ok use time :385
+0    WARN  [2021-04-08 18:24:32]  not find library.properties in classpath use it by default !
+3    INFO  [2021-04-08 18:24:32]  path to stream library/ambiguity.dic
+3    ERROR [2021-04-08 18:24:32]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-04-08 18:24:32]  begin init dic !
+5    INFO  [2021-04-08 18:24:32]  path to stream library/default.dic
+5    ERROR [2021-04-08 18:24:32]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+6    DEBUG [2021-04-08 18:24:32]  begin init crf model!
+1278 INFO  [2021-04-08 18:24:33]  load crf model ok ! use time :1269
+1278 INFO  [2021-04-08 18:24:33]  load crf use time:1272 path is : jar://crf.model
+2146 INFO  [2021-04-08 18:24:34]  init core library ok use time : 749
+2943 INFO  [2021-04-08 18:24:35]  init ngram ok use time :794
+0    WARN  [2021-04-08 18:43:51]  not find library.properties in classpath use it by default !
+3    INFO  [2021-04-08 18:43:51]  path to stream library/ambiguity.dic
+3    ERROR [2021-04-08 18:43:51]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-04-08 18:43:51]  begin init dic !
+4    INFO  [2021-04-08 18:43:51]  path to stream library/default.dic
+4    ERROR [2021-04-08 18:43:51]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-04-08 18:43:51]  begin init crf model!
+1229 INFO  [2021-04-08 18:43:52]  load crf model ok ! use time :1222
+1230 INFO  [2021-04-08 18:43:52]  load crf use time:1225 path is : jar://crf.model
+2276 INFO  [2021-04-08 18:43:53]  init core library ok use time : 968
+2644 INFO  [2021-04-08 18:43:54]  init ngram ok use time :365
+0    WARN  [2021-04-09 16:44:29]  not find library.properties in classpath use it by default !
+25   INFO  [2021-04-09 16:44:29]  path to stream library/ambiguity.dic
+40   ERROR [2021-04-09 16:44:29]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+41   DEBUG [2021-04-09 16:44:29]  begin init dic !
+41   INFO  [2021-04-09 16:44:29]  path to stream library/default.dic
+41   ERROR [2021-04-09 16:44:29]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+42   DEBUG [2021-04-09 16:44:29]  begin init crf model!
+1303 INFO  [2021-04-09 16:44:30]  load crf model ok ! use time :1250
+1303 INFO  [2021-04-09 16:44:30]  load crf use time:1261 path is : jar://crf.model
+2015 INFO  [2021-04-09 16:44:31]  init core library ok use time : 620
+2455 INFO  [2021-04-09 16:44:31]  init ngram ok use time :437
+0    WARN  [2021-04-09 17:27:41]  not find library.properties in classpath use it by default !
+2    INFO  [2021-04-09 17:27:41]  path to stream library/ambiguity.dic
+2    ERROR [2021-04-09 17:27:41]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+3    DEBUG [2021-04-09 17:27:41]  begin init dic !
+3    INFO  [2021-04-09 17:27:41]  path to stream library/default.dic
+3    ERROR [2021-04-09 17:27:41]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-04-09 17:27:41]  begin init crf model!
+1236 INFO  [2021-04-09 17:27:42]  load crf model ok ! use time :1230
+1236 INFO  [2021-04-09 17:27:42]  load crf use time:1232 path is : jar://crf.model
+1927 INFO  [2021-04-09 17:27:43]  init core library ok use time : 608
+2724 INFO  [2021-04-09 17:27:44]  init ngram ok use time :794
+0    WARN  [2021-04-09 20:22:20]  not find library.properties in classpath use it by default !
+5    INFO  [2021-04-09 20:22:20]  path to stream library/ambiguity.dic
+6    ERROR [2021-04-09 20:22:20]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+7    DEBUG [2021-04-09 20:22:20]  begin init dic !
+7    INFO  [2021-04-09 20:22:20]  path to stream library/default.dic
+8    ERROR [2021-04-09 20:22:20]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+9    DEBUG [2021-04-09 20:22:20]  begin init crf model!
+1251 INFO  [2021-04-09 20:22:21]  load crf model ok ! use time :1238
+1251 INFO  [2021-04-09 20:22:21]  load crf use time:1242 path is : jar://crf.model
+2066 INFO  [2021-04-09 20:22:22]  init core library ok use time : 712
+2394 INFO  [2021-04-09 20:22:22]  init ngram ok use time :324
+0    WARN  [2021-04-10 09:01:03]  not find library.properties in classpath use it by default !
+31   INFO  [2021-04-10 09:01:03]  path to stream library/ambiguity.dic
+43   ERROR [2021-04-10 09:01:04]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+44   DEBUG [2021-04-10 09:01:04]  begin init dic !
+44   INFO  [2021-04-10 09:01:04]  path to stream library/default.dic
+44   ERROR [2021-04-10 09:01:04]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+45   DEBUG [2021-04-10 09:01:04]  begin init crf model!
+1300 INFO  [2021-04-10 09:01:05]  load crf model ok ! use time :1250
+1301 INFO  [2021-04-10 09:01:05]  load crf use time:1256 path is : jar://crf.model
+2597 INFO  [2021-04-10 09:01:06]  init core library ok use time : 1165
+3011 INFO  [2021-04-10 09:01:06]  init ngram ok use time :411
+0    WARN  [2021-04-10 11:28:43]  not find library.properties in classpath use it by default !
+3    INFO  [2021-04-10 11:28:43]  path to stream library/ambiguity.dic
+3    ERROR [2021-04-10 11:28:43]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-04-10 11:28:43]  begin init dic !
+4    INFO  [2021-04-10 11:28:43]  path to stream library/default.dic
+4    ERROR [2021-04-10 11:28:43]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-04-10 11:28:43]  begin init crf model!
+1071 INFO  [2021-04-10 11:28:44]  load crf model ok ! use time :1064
+1071 INFO  [2021-04-10 11:28:44]  load crf use time:1066 path is : jar://crf.model
+2211 INFO  [2021-04-10 11:28:45]  init core library ok use time : 1060
+2544 INFO  [2021-04-10 11:28:46]  init ngram ok use time :330
+0    WARN  [2021-04-10 14:59:06]  not find library.properties in classpath use it by default !
+24   INFO  [2021-04-10 14:59:06]  path to stream library/ambiguity.dic
+38   ERROR [2021-04-10 14:59:06]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+40   DEBUG [2021-04-10 14:59:06]  begin init dic !
+41   INFO  [2021-04-10 14:59:06]  path to stream library/default.dic
+41   ERROR [2021-04-10 14:59:06]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+42   DEBUG [2021-04-10 14:59:06]  begin init crf model!
+2111 INFO  [2021-04-10 14:59:08]  load crf model ok ! use time :2046
+2111 INFO  [2021-04-10 14:59:08]  load crf use time:2069 path is : jar://crf.model
+2975 INFO  [2021-04-10 14:59:09]  init core library ok use time : 767
+4250 INFO  [2021-04-10 14:59:11]  init ngram ok use time :1271
+0    WARN  [2021-04-10 15:00:20]  not find library.properties in classpath use it by default !
+5    INFO  [2021-04-10 15:00:20]  path to stream library/ambiguity.dic
+6    ERROR [2021-04-10 15:00:20]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+7    DEBUG [2021-04-10 15:00:20]  begin init dic !
+7    INFO  [2021-04-10 15:00:20]  path to stream library/default.dic
+8    ERROR [2021-04-10 15:00:20]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+9    DEBUG [2021-04-10 15:00:20]  begin init crf model!
+2312 INFO  [2021-04-10 15:00:22]  load crf model ok ! use time :2298
+2312 INFO  [2021-04-10 15:00:22]  load crf use time:2303 path is : jar://crf.model
+3797 INFO  [2021-04-10 15:00:24]  init core library ok use time : 1314
+5427 INFO  [2021-04-10 15:00:26]  init ngram ok use time :1626
+0    WARN  [2021-04-10 15:11:22]  not find library.properties in classpath use it by default !
+3    INFO  [2021-04-10 15:11:22]  path to stream library/ambiguity.dic
+3    ERROR [2021-04-10 15:11:22]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-04-10 15:11:22]  begin init dic !
+4    INFO  [2021-04-10 15:11:22]  path to stream library/default.dic
+5    ERROR [2021-04-10 15:11:22]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-04-10 15:11:22]  begin init crf model!
+1689 INFO  [2021-04-10 15:11:23]  load crf model ok ! use time :1681
+1689 INFO  [2021-04-10 15:11:23]  load crf use time:1684 path is : jar://crf.model
+2588 INFO  [2021-04-10 15:11:24]  init core library ok use time : 798
+3230 INFO  [2021-04-10 15:11:25]  init ngram ok use time :638
+0    WARN  [2021-04-10 15:13:09]  not find library.properties in classpath use it by default !
+5    INFO  [2021-04-10 15:13:09]  path to stream library/ambiguity.dic
+6    ERROR [2021-04-10 15:13:09]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+8    DEBUG [2021-04-10 15:13:09]  begin init dic !
+8    INFO  [2021-04-10 15:13:09]  path to stream library/default.dic
+9    ERROR [2021-04-10 15:13:09]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+10   DEBUG [2021-04-10 15:13:09]  begin init crf model!
+2255 INFO  [2021-04-10 15:13:12]  load crf model ok ! use time :2241
+2256 INFO  [2021-04-10 15:13:12]  load crf use time:2246 path is : jar://crf.model
+3648 INFO  [2021-04-10 15:13:13]  init core library ok use time : 1217
+4423 INFO  [2021-04-10 15:13:14]  init ngram ok use time :770
+0    WARN  [2021-04-10 17:43:02]  not find library.properties in classpath use it by default !
+11   INFO  [2021-04-10 17:43:02]  path to stream library/ambiguity.dic
+12   ERROR [2021-04-10 17:43:02]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+13   DEBUG [2021-04-10 17:43:02]  begin init dic !
+13   INFO  [2021-04-10 17:43:02]  path to stream library/default.dic
+13   ERROR [2021-04-10 17:43:02]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+17   DEBUG [2021-04-10 17:43:02]  begin init crf model!
+1223 INFO  [2021-04-10 17:43:03]  load crf model ok ! use time :1198
+1223 INFO  [2021-04-10 17:43:03]  load crf use time:1206 path is : jar://crf.model
+1959 INFO  [2021-04-10 17:43:04]  init core library ok use time : 631
+2884 INFO  [2021-04-10 17:43:05]  init ngram ok use time :921
+0    WARN  [2021-04-12 08:42:24]  not find library.properties in classpath use it by default !
+7    INFO  [2021-04-12 08:42:24]  path to stream library/ambiguity.dic
+8    ERROR [2021-04-12 08:42:24]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+9    DEBUG [2021-04-12 08:42:24]  begin init dic !
+9    INFO  [2021-04-12 08:42:24]  path to stream library/default.dic
+10   ERROR [2021-04-12 08:42:24]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+13   DEBUG [2021-04-12 08:42:24]  begin init crf model!
+1179 INFO  [2021-04-12 08:42:25]  load crf model ok ! use time :1160
+1180 INFO  [2021-04-12 08:42:25]  load crf use time:1167 path is : jar://crf.model
+1927 INFO  [2021-04-12 08:42:26]  init core library ok use time : 653
+2332 INFO  [2021-04-12 08:42:26]  init ngram ok use time :401
+0    WARN  [2021-04-12 16:09:30]  not find library.properties in classpath use it by default !
+20   INFO  [2021-04-12 16:09:30]  path to stream library/ambiguity.dic
+32   ERROR [2021-04-12 16:09:30]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+34   DEBUG [2021-04-12 16:09:30]  begin init dic !
+34   INFO  [2021-04-12 16:09:30]  path to stream library/default.dic
+34   ERROR [2021-04-12 16:09:30]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+35   DEBUG [2021-04-12 16:09:30]  begin init crf model!
+1420 INFO  [2021-04-12 16:09:31]  load crf model ok ! use time :1379
+1420 INFO  [2021-04-12 16:09:31]  load crf use time:1385 path is : jar://crf.model
+2275 INFO  [2021-04-12 16:09:32]  init core library ok use time : 744
+2826 INFO  [2021-04-12 16:09:32]  init ngram ok use time :547
+0    WARN  [2021-04-12 16:51:35]  not find library.properties in classpath use it by default !
+3    INFO  [2021-04-12 16:51:35]  path to stream library/ambiguity.dic
+3    ERROR [2021-04-12 16:51:35]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-04-12 16:51:35]  begin init dic !
+4    INFO  [2021-04-12 16:51:35]  path to stream library/default.dic
+4    ERROR [2021-04-12 16:51:35]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+5    DEBUG [2021-04-12 16:51:35]  begin init crf model!
+1252 INFO  [2021-04-12 16:51:36]  load crf model ok ! use time :1245
+1252 INFO  [2021-04-12 16:51:36]  load crf use time:1247 path is : jar://crf.model
+1961 INFO  [2021-04-12 16:51:37]  init core library ok use time : 626
+2321 INFO  [2021-04-12 16:51:37]  init ngram ok use time :358
+0    WARN  [2021-04-12 18:24:33]  not find library.properties in classpath use it by default !
+2    INFO  [2021-04-12 18:24:33]  path to stream library/ambiguity.dic
+3    ERROR [2021-04-12 18:24:33]  Init ambiguity library error :org.ansj.exception.LibraryException:  path :library/ambiguity.dic file:D:\idea_project\weibo_monitor\library\ambiguity.dic not found or can not to read, path: library/ambiguity.dic
+4    DEBUG [2021-04-12 18:24:33]  begin init dic !
+4    INFO  [2021-04-12 18:24:33]  path to stream library/default.dic
+4    ERROR [2021-04-12 18:24:33]  Init dic library error :org.ansj.exception.LibraryException:  path :library/default.dic file:D:\idea_project\weibo_monitor\library\default.dic not found or can not to read, path: library/default.dic
+4    DEBUG [2021-04-12 18:24:33]  begin init crf model!
+1320 INFO  [2021-04-12 18:24:34]  load crf model ok ! use time :1314
+1320 INFO  [2021-04-12 18:24:34]  load crf use time:1316 path is : jar://crf.model
+2157 INFO  [2021-04-12 18:24:35]  init core library ok use time : 750
+2527 INFO  [2021-04-12 18:24:35]  init ngram ok use time :367
